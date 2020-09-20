@@ -1,0 +1,1014 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+
+  <title>title</title>
+
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <!-- REVEAL CSS-->
+  <link rel="stylesheet" href="libs/reveal.js/font-awesome-4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="libs/reveal.js/3.8.0/css/reveal.css">
+  
+  <link rel="stylesheet" href="libs/reveal.js/3.8.0/css/theme/white.css" id="theme">
+  
+  
+  <link rel="stylesheet" href="libs/reveal.js/3.8.0/plugin/title-footer/title-footer-mod.css" />
+
+  <!-- MERMAID-->
+  <script src="libs/reveal.js/3.8.0/plugin/mermaid/mermaid.min.js"></script>
+  <style>
+  .mermaid {
+    font-size: 0.5em;
+  }
+  </style>
+
+  <style>
+    [class*=task-list-item] {
+    min-height: 22px;
+    margin-top: 6px!important;
+    margin-bottom: 6px!important;
+    padding-left: 0;
+    list-style: none;
+}
+
+[class*=task-list-item]>input:first-child {
+    position: absolute!important;
+    opacity: 0;
+    margin: 0;
+}
+[class*=task-list-item]>label {
+    padding-left: 29px!important;
+    min-height: 22px;
+    line-height: 22px;
+    display: inline-block;
+    position: relative;
+    vertical-align: top;
+    margin-bottom: 0;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+.task-list-item>input:first-child:checked+input[type=hidden]+label::before, .task-list-item>input:first-child:checked+label::before {
+    background-color: #ecf0f1;
+    border-color: #ecf0f1;
+}
+
+[class*=task-list-item]>input:first-child+input[type=hidden]+label::before, [class*=task-list-item]>input:first-child+label::before {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    border: 1px solid #D3CFC8;
+    border-radius: 0;
+    margin-left: -29px;
+}
+
+
+[class*=task-list-item]>input:first-child:checked+input[type=hidden]+label::after, [class*=task-list-item]>input:first-child:checked+label::after {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 7px;
+    height: 10px;
+    border: 2px solid #fff;
+    border-left: none;
+    border-top: none;
+    transform: translate(7.75px,4.5px) rotate(45deg);
+    -ms-transform: translate(7.75px,4.5px) rotate(45deg);
+}
+
+
+.task-list-item>input:first-child:checked+input[type=hidden]+label::after, .task-list-item>input:first-child:checked+label::after {
+    border-bottom-color: #95a5a6;
+    border-right-color: #95a5a6;
+}
+  </style>
+
+  <!-- Theme used for syntax highlighting of code -->
+  
+  <link rel="stylesheet" href="libs/highlight.js/9.12.0/Zenburn.css">
+  
+
+  
+  
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match(/print-pdf/gi) ? 'libs/reveal.js/3.8.0/css/print/pdf.css' : 'libs/reveal.js/3.8.0/css/print/paper.css';
+    document.getElementsByTagName('head')[0].appendChild(link);
+  </script>
+
+  <style>
+    /* Solarized Light theme */
+     .line {
+      display: block;
+    }
+    
+
+    .line.focus {
+      background: #fdf6e3;
+      color: #657b83;
+    }
+
+/*
+    .line.focus .hljs-comment,
+    .line.focus .hljs-quote {
+      color: #93a1a1;
+    }
+
+    .line.focus .hljs-keyword,
+    .line.focus .hljs-selector-tag,
+    .line.focus .hljs-addition {
+      color: #859900;
+    }
+
+    .line.focus .hljs-number,
+    .line.focus .hljs-string,
+    .line.focus .hljs-meta .hljs-meta-string,
+    .line.focus .hljs-literal,
+    .line.focus .hljs-doctag,
+    .line.focus .hljs-regexp {
+      color: #2aa198;
+    }
+
+    .line.focus .hljs-title,
+    .line.focus .hljs-section,
+    .line.focus .hljs-name,
+    .line.focus .hljs-selector-id,
+    .line.focus .hljs-selector-class {
+      color: #268bd2;
+    }
+
+    .line.focus .hljs-attribute,
+    .line.focus .hljs-attr,
+    .line.focus .hljs-variable,
+    .line.focus .hljs-template-variable,
+    .line.focus .hljs-class .hljs-title,
+    .line.focus .hljs-type {
+      color: #b58900;
+    }
+
+    .line.focus .hljs-symbol,
+    .line.focus .hljs-bullet,
+    .line.focus .hljs-subst,
+    .line.focus .hljs-meta,
+    .line.focus .hljs-meta .hljs-keyword,
+    .line.focus .hljs-selector-attr,
+    .line.focus .hljs-selector-pseudo,
+    .line.focus .hljs-link {
+      color: #cb4b16;
+    }
+
+    .line.focus .hljs-built_in,
+    .line.focus .hljs-deletion {
+      color: #dc322f;
+    }
+
+    .line.focus .hljs-formula {
+      background: #eee8d5;
+    }
+
+    .line.focus .hljs-emphasis {
+      font-style: italic;
+    }
+
+    .line.focus .hljs-strong {
+      font-weight: bold;
+    }
+
+    .yellow-slide .line.focus:nth-child(2) {
+      background: yellow;
+    }
+
+    .reveal .slides section .code-presenting-annotation {
+      font-size: 70%;
+    }
+    */
+
+    .reveal .slides section .fragment.current-only {
+      visibility: visible;
+      display: none;
+    }
+
+    .reveal .slides section .fragment.current-only.current-fragment {
+      display: block;
+    }
+
+/*
+    .line {
+      display: block;
+    }
+*/
+    .line.focus {
+       opacity: 1.0;
+    } 
+
+    /* .hljs {
+      background: none;
+    } */
+
+    /* .reveal pre {
+      width: 98%;
+      margin: 0px;
+      box-shadow: none;
+    }
+
+    .reveal pre code {
+      font-size: 1.2em;
+      line-height: 1.2;
+      border-radius: 10px;
+      max-height: 60vh !important;
+      overflow: hidden !important;
+    } */
+
+    @media (device-width: 100vw) and (device-height: 100vh) {
+      .reveal pre code {
+        max-height: 50vh !important;
+      }
+    }
+
+    #logo img {
+      max-height: 3.5em;
+      max-width: none;
+      min-width: 50px;
+    }
+
+    .reveal .slides section .code-presenting-annotation {
+      color: white;
+      background: black;
+      padding: 0px 15px;
+      border-radius: 15px;
+      opacity: 0.75 !important;
+      font-size: 50% !important;
+    }
+  </style>
+  <script>
+    if (window.location.search.match(/print-pdf-now/gi)) {
+      window.print();
+    }
+  </script>
+</head>
+
+<body>
+  
+
+  <div class="reveal">
+
+    <!-- Any section element inside of this container is displayed as a slide -->
+    <div class="slides">
+
+      
+
+
+    
+        <section >
+            
+            <h1><a id="user-content-" class="anchor" href="#" aria-hidden="true"></a><img src="./img/title.jpg" alt="いきなりコトリン_and_MVVM_and_DataBinding"></h1>
+<h4><a id="user-content-vmt開発部-赤倉-奈緒" class="anchor" href="#vmt開発部-赤倉-奈緒" aria-hidden="true"></a>VMT開発部　赤倉 奈緒</h4>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-この勉強会でやること" class="anchor" href="#この勉強会でやること" aria-hidden="true"></a>この勉強会でやること</h2>
+<ul>
+<li>Kotlinで……
+<ul>
+<li>中途採用者向けチュートリアルアプリ(カーセンサー中古車検索アプリ)を作成する</li>
+<li>ちょっと難しいけど</li>
+<li><code>MVVM</code> と</li>
+<li><code>DataBinding</code> と</li>
+<li><code>ViewBinding</code> も使う</li>
+</ul>
+</li>
+</ul>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-この勉強会でやってほしいこと" class="anchor" href="#この勉強会でやってほしいこと" aria-hidden="true"></a>この勉強会でやってほしいこと</h2>
+<ul>
+<li>Kotlinちょっとでも覚える</li>
+<li><code>MVVM</code> アーキテクチャに触れる</li>
+<li>ついでにAndroidの <code>DataBinding</code> と <code>ViewBinding</code> にも触れてみる</li>
+</ul>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-アジェンダ" class="anchor" href="#アジェンダ" aria-hidden="true"></a>アジェンダ</h2>
+<ul>
+<li>用意するもの</li>
+<li>とりあえず完成物の確認</li>
+<li>MVVMアーキテクチャの説明</li>
+<li><code>DataBinding</code> / <code>ViewBinding</code> の説明</li>
+<li>実際のプロジェクトの用意</li>
+</ul>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-アジェンダ-1" class="anchor" href="#アジェンダ-1" aria-hidden="true"></a>アジェンダ</h2>
+<ul>
+<li>API通信インターフェース (<code>Repository</code>) の作成</li>
+<li>最初のビュー (<code>MainFragment</code> / <code>MainViewModel</code>) の作成</li>
+<li>2つめのビュー (<code>UsedCarDetailFragment</code> / <code>UsedCarDetailViewModel</code>) の作成</li>
+<li>参考資料等</li>
+</ul>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-やることもりもり！" class="anchor" href="#やることもりもり！" aria-hidden="true"></a>やることもりもり！</h2>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-用意するもの" class="anchor" href="#用意するもの" aria-hidden="true"></a>用意するもの</h2>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-用意するもの-1" class="anchor" href="#用意するもの-1" aria-hidden="true"></a>用意するもの</h2>
+<h3><a id="user-content-androidstudioが動くpc" class="anchor" href="#androidstudioが動くpc" aria-hidden="true"></a>AndroidStudioが動くPC</h3>
+<ul>
+<li>macOSでも</li>
+<li>Windowsでも</li>
+<li>お好きなLinuxでも</li>
+<li>AndroidStudioが動けばなんでもいいです</li>
+<li><code>AVD Manager</code> も動ける環境が好ましいです(OR 実機でデバッグだ)</li>
+</ul>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-用意するもの-2" class="anchor" href="#用意するもの-2" aria-hidden="true"></a>用意するもの</h2>
+<h3><a id="user-content-androidstudio" class="anchor" href="#androidstudio" aria-hidden="true"></a>AndroidStudio</h3>
+<ul>
+<li><code>AVD Manager</code> でデバッグ用のエミュレートマシンも用意しておくとGOODですね！</li>
+</ul>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-用意するもの-3" class="anchor" href="#用意するもの-3" aria-hidden="true"></a>用意するもの</h2>
+<h3><a id="user-content-デバッグ用実機またはエミュレートマシン" class="anchor" href="#デバッグ用実機またはエミュレートマシン" aria-hidden="true"></a>デバッグ用実機またはエミュレートマシン</h3>
+<ul>
+<li><code>AVD Manager</code> で用意できます！</li>
+</ul>
+<p><img src="./img/0-0.png" alt="AVDマネージャの場所"></p>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-用意するもの-4" class="anchor" href="#用意するもの-4" aria-hidden="true"></a>用意するもの</h2>
+<h3><a id="user-content-デバッグ用実機またはエミュレートマシン-1" class="anchor" href="#デバッグ用実機またはエミュレートマシン-1" aria-hidden="true"></a>デバッグ用実機またはエミュレートマシン</h3>
+<ul>
+<li><code>AVD Manager</code> で用意できます！</li>
+</ul>
+<p><img src="./img/0-1.png" alt="AVDマネージャの場所"></p>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-用意するもの-5" class="anchor" href="#用意するもの-5" aria-hidden="true"></a>用意するもの</h2>
+<h3><a id="user-content-カーセンサーapiアクセス用トークンの取得" class="anchor" href="#カーセンサーapiアクセス用トークンの取得" aria-hidden="true"></a>カーセンサーAPIアクセス用トークンの取得</h3>
+<ul>
+<li>以下から登録を行っておいてください
+<ul>
+<li><a href="https://webservice.recruit.co.jp/register/">https://webservice.recruit.co.jp/register/</a></li>
+</ul>
+</li>
+<li>忘れた方は <s>-仕方なく</s> 赤倉の持っているIDを配布しますので、しばらくお待ちください</li>
+</ul>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-とりあえず完成物の確認" class="anchor" href="#とりあえず完成物の確認" aria-hidden="true"></a>とりあえず完成物の確認</h2>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-とりあえず完成物の確認-1" class="anchor" href="#とりあえず完成物の確認-1" aria-hidden="true"></a>とりあえず完成物の確認</h2>
+<ul>
+<li>
+<p>こちらにすでに作成済みのアプリが存在しています</p>
+</li>
+<li>
+<p>よろしければ、どのようなコードなのか、どのような挙動をするアプリなのかをチェックしてみてください</p>
+</li>
+</ul>
+<p><a href="https://github.com/cocoalix/CarsensorApp">https://github.com/cocoalix/CarsensorApp</a></p>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-mvvmアーキテクチャの説明" class="anchor" href="#mvvmアーキテクチャの説明" aria-hidden="true"></a>MVVMアーキテクチャの説明</h2>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-mvvmアーキテクチャの説明-1" class="anchor" href="#mvvmアーキテクチャの説明-1" aria-hidden="true"></a>MVVMアーキテクチャの説明</h2>
+<h3><a id="user-content-mvvmアーキテクチャとは" class="anchor" href="#mvvmアーキテクチャとは" aria-hidden="true"></a>MVVMアーキテクチャとは</h3>
+<ul>
+<li>Model-View-ViewModel Architecture</li>
+<li>GUIアプリケーションの実装手法のひとつ</li>
+<li>MVCの派生パターンであり「プレゼンテーションとドメインを分離」する
+<ul>
+<li>この手法によってアプリケーション開発における保守性・開発生産性に寄与する</li>
+</ul>
+</li>
+</ul>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h3><a id="user-content-mvvmアーキテクチャとは-1" class="anchor" href="#mvvmアーキテクチャとは-1" aria-hidden="true"></a>MVVMアーキテクチャとは</h3>
+<h4><a id="user-content-model" class="anchor" href="#model" aria-hidden="true"></a>Model</h4>
+<ul>
+<li>アプリケーションの ドメイン(問題領域) を取り扱う</li>
+<li>そのアプリケーションが扱う領域のデータと手続き(ビジネスロジック)を表現する要素
+<ul>
+<li>ビジネスロジック(ショッピングの合計額や送料を計算するなど）</li>
+</ul>
+</li>
+</ul>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h3><a id="user-content-mvvmアーキテクチャとは-2" class="anchor" href="#mvvmアーキテクチャとは-2" aria-hidden="true"></a>MVVMアーキテクチャとは</h3>
+<h4><a id="user-content-model-1" class="anchor" href="#model-1" aria-hidden="true"></a>Model</h4>
+<ul>
+<li>多くのアプリケーションではDBアクセスやサーバ側との通信ロジックなどが含まれている</li>
+<li>MVVMの概念ではMVCの概念と同様に、データの（UI以外の）入出力は取り扱わないので、強いて言うならばそれらはModelの中に隠蔽されると考えられる</li>
+</ul>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h3><a id="user-content-mvvmアーキテクチャとは-3" class="anchor" href="#mvvmアーキテクチャとは-3" aria-hidden="true"></a>MVVMアーキテクチャとは</h3>
+<h4><a id="user-content-model-2" class="anchor" href="#model-2" aria-hidden="true"></a>Model</h4>
+<ul>
+<li>一般的にModelはドメインを担当すると言われるがこの言葉だけをもってModelの役割を想像するのは難しい</li>
+<li>Modelの役割は、後述するViewとViewModelの役割以外の部分と考えるのが妥当</li>
+</ul>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h3><a id="user-content-mvvmアーキテクチャとは-4" class="anchor" href="#mvvmアーキテクチャとは-4" aria-hidden="true"></a>MVVMアーキテクチャとは</h3>
+<h4><a id="user-content-view" class="anchor" href="#view" aria-hidden="true"></a>View</h4>
+<ul>
+<li>アプリケーションの扱うデータをユーザーが見るのに適した形で表示し、ユーザーからの入力を受け取る要素</li>
+<li>すなわちUIへの入力とUIからの出力を担当する</li>
+<li>後述するViewModelに含まれたデータをデータバインディング機構のようなものを通じて自動的に描画するだけで自身の役割を果たす</li>
+<li>Viewそのものに複雑なロジックと状態を持たないのがMVVMのViewの特徴</li>
+</ul>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h3><a id="user-content-mvvmアーキテクチャとは-5" class="anchor" href="#mvvmアーキテクチャとは-5" aria-hidden="true"></a>MVVMアーキテクチャとは</h3>
+<h4><a id="user-content-viewmodel" class="anchor" href="#viewmodel" aria-hidden="true"></a>ViewModel</h4>
+<ul>
+<li>Viewを描画するための状態の保持と、Viewから受け取った入力を適切な形に変換してModelに伝達する役目を持つ</li>
+<li>すなわちViewとModelの間の情報の伝達と、Viewのための状態保持のみを役割とする要素である
+<ul>
+<li>e.g. ドロワーの開閉など</li>
+</ul>
+</li>
+</ul>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h3><a id="user-content-mvvmアーキテクチャとは-6" class="anchor" href="#mvvmアーキテクチャとは-6" aria-hidden="true"></a>MVVMアーキテクチャとは</h3>
+<h4><a id="user-content-viewmodel-1" class="anchor" href="#viewmodel-1" aria-hidden="true"></a>ViewModel</h4>
+<ul>
+<li>Viewとの通信はデータバインディング機構のような仕組みを通じて行うため、ViewModelの変更は開発者から見て自動的にViewに反映される</li>
+</ul>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-databinding--viewbinding-の説明" class="anchor" href="#databinding--viewbinding-の説明" aria-hidden="true"></a><code>DataBinding</code> / <code>ViewBinding</code> の説明</h2>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-databinding--viewbinding-の説明-1" class="anchor" href="#databinding--viewbinding-の説明-1" aria-hidden="true"></a><code>DataBinding</code> / <code>ViewBinding</code> の説明</h2>
+<ul>
+<li>データバインディングは、データと対象を結びつけ、データあるいは対象の変更を暗示的にもう一方の変更へ反映すること、それを実現する仕組みのこと</li>
+</ul>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-databinding--viewbinding-の説明-2" class="anchor" href="#databinding--viewbinding-の説明-2" aria-hidden="true"></a><code>DataBinding</code> / <code>ViewBinding</code> の説明</h2>
+<ul>
+<li>データバインディングには変更反映の方向性によって以下の2種類が存在する
+<ul>
+<li>方向バインディング(1way): data ⇒ target あるいは target ⇒ data のみの一方向な暗示的反映</li>
+<li>双方向バインディング(2way): data ⇔ target の双方向な暗示的反映</li>
+</ul>
+</li>
+</ul>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-ここまでwikipedia調べ" class="anchor" href="#ここまでwikipedia調べ" aria-hidden="true"></a>ここまでWikipedia調べ</h2>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-実際のプロジェクトの用意" class="anchor" href="#実際のプロジェクトの用意" aria-hidden="true"></a>実際のプロジェクトの用意</h2>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-api通信インターフェース--repository--の作成" class="anchor" href="#api通信インターフェース--repository--の作成" aria-hidden="true"></a>API通信インターフェース (<code>Repository</code>) の作成</h2>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-最初のビュー--mainfragment--mainviewmodel--の作成" class="anchor" href="#最初のビュー--mainfragment--mainviewmodel--の作成" aria-hidden="true"></a>最初のビュー (<code>MainFragment</code> / <code>MainViewModel</code>) の作成</h2>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-2つめのビュー--usedcardetailfragment--usedcardetailviewmodel--の作成" class="anchor" href="#2つめのビュー--usedcardetailfragment--usedcardetailviewmodel--の作成" aria-hidden="true"></a>2つめのビュー (<code>UsedCarDetailFragment</code> / <code>UsedCarDetailViewModel</code>) の作成</h2>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-参考資料等" class="anchor" href="#参考資料等" aria-hidden="true"></a>参考資料等</h2>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-参考資料等-1" class="anchor" href="#参考資料等-1" aria-hidden="true"></a>参考資料等</h2>
+<ul>
+<li><a href="https://ja.wikipedia.org/wiki/Model_View_ViewModel">ModelViewViewModel - Wikipedia</a></li>
+<li><a href="https://ja.wikipedia.org/wiki/%E3%83%87%E3%83%BC%E3%82%BF%E3%83%90%E3%82%A4%E3%83%B3%E3%83%87%E3%82%A3%E3%83%B3%E3%82%B0">データバインディング - Wikipedia</a></li>
+<li><a href="https://qiita.com/Tsutou/items/69a28ebbd69b69e51703#view">Android Architecture Components 初級 （ MVVM + LiveData + Coroutines 編 ）- Qiita</a></li>
+<li><a href="https://developer.android.com/topic/libraries/view-binding?hl=ja">ビュー バインディング - AndroidDeveloper</a></li>
+<li><a href="https://teratail.com/questions/52200">ビルド時に&quot;エラー:パッケージhogehogetest.databindingは存在しません&quot;とエラーする - teratail</a></li>
+<li><a href="https://qiita.com/sadashi/items/fd902619f5b3491e969f">Kotlin Parcelable について - Qiita</a></li>
+</ul>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-ご参加、ありがとうございました" class="anchor" href="#ご参加、ありがとうございました" aria-hidden="true"></a>ご参加、ありがとうございました</h2>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-おわり" class="anchor" href="#おわり" aria-hidden="true"></a>おわり</h2>
+
+            </section>
+    
+
+
+    </div>
+
+
+  </div>
+
+  <script src="libs/reveal.js/3.8.0/lib/js/head.min.js"></script>
+  <script src="libs/reveal.js/3.8.0/js/reveal.js"></script>
+
+  <script>
+
+    // More info https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+
+        controls: true,
+        controlsTutorial: true,
+        controlsLayout: 'bottom-right',
+        controlsBackArrows: 'faded',
+        progress: true,
+        slideNumber: false,
+        history: true,
+        keyboard: true,
+        overview: true,
+        center: true,
+        touch: true,
+        loop: false,
+        rtl: false,
+        shuffle: false,
+        fragments: true,
+        fragmentInURL: false,
+        embedded: false,
+        help: true,
+        showNotes: false,
+        autoPlayMedia: false,
+        autoSlide: 0,
+        autoSlideStoppable: true,
+        autoSlideMethod: Reveal.navigateNext,
+        defaultTiming: 120,
+        mouseWheel: false,
+        hideAddressBar: true,
+        previewLinks: false,
+        transition: 'default',
+        transitionSpeed: 'default',
+        backgroundTransition: 'default',
+        viewDistance: 3,
+        parallaxBackgroundImage: '',
+        parallaxBackgroundSize: '',
+        parallaxBackgroundHorizontal: 0,
+        parallaxBackgroundVertical: 0,
+        display: 'block',
+
+        // More info https://github.com/hakimel/reveal.js#dependencies
+        dependencies: [
+            // { src: 'libs/reveal.js/3.8.0/lib/js/classList.js', condition: function () { return !document.body.classList; } },
+            // { src: 'libs/reveal.js/3.8.0/plugin/markdown/marked.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+            // { src: 'libs/reveal.js/3.8.0/plugin/markdown/markdown.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+            // { src: 'libs/reveal.js/3.8.0/plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } },
+            { src: 'libs/reveal.js/3.8.0/plugin/notes/notes.js', async: true },
+            { src: 'libs/reveal.js/3.8.0/plugin/chart/Chart.min.js' },
+            { src: 'libs/reveal.js/3.8.0/plugin/chart/csv2chart.js' },
+            { src: 'libs/reveal.js/3.8.0/plugin/embed-tweet/embed-tweet.js' },
+            { src: 'libs/reveal.js/3.8.0/plugin/math/math.js', async: true },
+            { src: 'libs/highlight.js/9.12.0/highlight.js', async: true },
+            { src: 'libs/reveal.js/3.8.0/plugin/anything/anything.js' },
+            { src: 'libs/reveal.js/3.8.0/plugin/mermaid/mermaid.min.js', async: true, callback: function() {mermaid.initialize({startOnLoad:false})} },	
+
+           
+        { src: 'libs/reveal.js/3.8.0/plugin/search/search.js', async: true },
+           
+
+           
+        { src: 'libs/reveal.js/3.8.0/plugin/zoom-js/zoom.js', async: true },
+            
+
+            
+        { src: 'libs/reveal.js/3.8.0/plugin/chalkboard/chalkboard.js' },
+            
+
+            
+        { src: 'libs/reveal.js/3.8.0/plugin/menu/menu.js' },
+            
+
+            
+        { src: 'libs/reveal.js/3.8.0/plugin/title-footer/title-footer.js', async: true, callback: function () { title_footer.initialize(); } },
+            
+
+        {
+            src: 'libs/highlight.js/9.12.0/reveal-code-focus-1.0.0-mod.js',
+            async: true,
+            callback: function () {
+                RevealCodeFocus();
+            }
+        },
+            // { src: 'libs/reveal.js/3.8.0/plugin/reveal-code-focus/highlight.pack.js' },
+            // { src: 'libs/reveal.js/3.8.0/plugin/reveal-code-focus/reveal-code-focus.js', async: true, callback: function() { RevealCodeFocus(); } },
+           // {src: 'libs/reveal.js/3.8.0/plugin/line-numbers/line-numbers.js'}
+        ]
+        ,
+    keyboard: {
+        67: function () { RevealChalkboard.toggleNotesCanvas() },	// toggle notes canvas when 'c' is pressed
+        66: function () { RevealChalkboard.toggleChalkboard() },	// toggle chalkboard when 'b' is pressed
+        46: function () { RevealChalkboard.clear() },	// clear chalkboard when 'DEL' is pressed
+        8: function () { RevealChalkboard.reset() },	// reset chalkboard data on current slide when 'BACKSPACE' is pressed
+        68: function () { RevealChalkboard.download() },	// downlad recorded chalkboard drawing when 'd' is pressed
+    },
+    math: {
+       // mathjax: 'libs/reveal.js/3.8.0/plugin/math/MathJax.js',
+             mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+            config: 'TeX-AMS_HTML-full'
+    },
+    chart: {
+        defaults: {
+            global: {
+                title: { fontColor: "#FFF" },
+                legend: {
+                    position: "bottom",
+                        labels: { fontColor: "#FFF" },
+                },
+                tooltips: {
+                    labels: { fontColor: "#FFF" },
+                },
+            },
+            scale: {
+                scaleLabel: { fontColor: "#FFF" },
+                gridLines: { color: "#FFF", zeroLineColor: "#FFF" },
+                ticks: { fontColor: "#FFF" },
+            }
+        },
+        line: { borderColor: ["rgba(20,220,220,.8)", "rgba(220,120,120,.8)", "rgba(20,120,220,.8)"], "borderDash": [[5, 10], [0, 0]] },
+        bar: { backgroundColor: ["rgba(20,220,220,.8)", "rgba(220,120,120,.8)", "rgba(20,120,220,.8)"] },
+        pie: { backgroundColor: [["rgba(0,0,0,.8)", "rgba(220,20,20,.8)", "rgba(20,220,20,.8)", "rgba(220,220,20,.8)", "rgba(20,20,220,.8)"]] },
+        radar: { borderColor: ["rgba(20,220,220,.8)", "rgba(220,120,120,.8)", "rgba(20,120,220,.8)"] },
+    },
+    anything: [ 
+	 {
+	  className: "mermaid"
+	 },
+	 // ...
+	],
+    menu: {
+        // Specifies which side of the presentation the menu will 
+        // be shown. Use 'left' or 'right'.
+        side: 'left',
+
+            // Specifies the width of the menu.
+            // Can be one of the following:
+            // 'normal', 'wide', 'third', 'half', 'full', or
+            // any valid css length value
+            width: 'normal',
+
+                // Add slide numbers to the titles in the slide list.
+                // Use 'true' or format string (same as reveal.js slide numbers)
+                numbers: false,
+
+                    // Specifies which slide elements will be used for generating
+                    // the slide titles in the menu. The default selects the first
+                    // heading element found in the slide, but you can specify any
+                    // valid css selector and the text from the first matching
+                    // element will be used.
+                    // Note: that a section data-menu-title attribute or an element
+                    // with a menu-title class will take precedence over this option
+                    titleSelector: 'h1, h2, h3, h4, h5, h6',
+
+                        // If slides do not have a matching title, attempt to use the
+                        // start of the text content as the title instead
+                        useTextContentForMissingTitles: false,
+
+                            // Hide slides from the menu that do not have a title.
+                            // Set to 'true' to only list slides with titles.
+                            hideMissingTitles: false,
+
+                                // Adds markers to the slide titles to indicate the 
+                                // progress through the presentation. Set to 'false'
+                                // to hide the markers.
+                                markers: true,
+
+                                    // Specify custom panels to be included in the menu, by
+                                    // providing an array of objects with 'title', 'icon'
+                                    // properties, and either a 'src' or 'content' property.
+                                    // custom: false,
+                                    custom: [],
+                                        // Specifies the themes that will be available in the themes
+                                        // menu panel. Set to 'true' to show the themes menu panel
+                                        // with the default themes list. Alternatively, provide an
+                                        // array to specify the themes to make available in the
+                                        // themes menu panel, for example...
+                                        // [
+                                        //     { name: 'Black', theme: 'css/theme/black.css' },
+                                        //     { name: 'White', theme: 'css/theme/white.css' },
+                                        //     { name: 'League', theme: 'css/theme/league.css' }
+                                        // ]
+                                        themes: false,
+
+                                            // Specifies the path to the default theme files. If your
+                                            // presentation uses a different path to the standard reveal
+                                            // layout then you need to provide this option, but only
+                                            // when 'themes' is set to 'true'. If you provide your own 
+                                            // list of themes or 'themes' is set to 'false' the 
+                                            // 'themesPath' option is ignored.
+                                            themesPath: 'css/theme/',
+
+                                                // Specifies if the transitions menu panel will be shown.
+                                                // Set to 'true' to show the transitions menu panel with
+                                                // the default transitions list. Alternatively, provide an
+                                                // array to specify the transitions to make available in
+                                                // the transitions panel, for example...
+                                                // ['None', 'Fade', 'Slide']
+                                                transitions: false,
+
+                                                    // Adds a menu button to the slides to open the menu panel.
+                                                    // Set to 'false' to hide the button.
+                                                    openButton: true,
+
+                                                        // If 'true' allows the slide number in the presentation to
+                                                        // open the menu panel. The reveal.js slideNumber option must 
+                                                        // be displayed for this to take effect
+                                                        openSlideNumber: false,
+
+                                                            // If true allows the user to open and navigate the menu using
+                                                            // the keyboard. Standard keyboard interaction with reveal
+                                                            // will be disabled while the menu is open.
+                                                            keyboard: true,
+
+                                                                // Normally the menu will close on user actions such as
+                                                                // selecting a menu item, or clicking the presentation area.
+                                                                // If 'true', the sticky option will leave the menu open
+                                                                // until it is explicitly closed, that is, using the close
+                                                                // button or pressing the ESC or m key (when the keyboard 
+                                                                // interaction option is enabled).
+                                                                sticky: false,
+
+                                                                    // If 'true' standard menu items will be automatically opened
+                                                                    // when navigating using the keyboard. Note: this only takes 
+                                                                    // effect when both the 'keyboard' and 'sticky' options are enabled.
+                                                                    autoOpen: true,
+
+                                                                        // If 'true' the menu will not be created until it is explicitly
+                                                                        // requested by calling RevealMenu.init(). Note this will delay
+                                                                        // the creation of all menu panels, including custom panels, and
+                                                                        // the menu button.
+                                                                        delayInit: false,
+
+                                                                            // If 'true' the menu will be shown when the menu is initialised.
+                                                                            openOnInit: false,
+
+                                                                                // By default the menu will load it's own font-awesome library
+                                                                                // icons. If your presentation needs to load a different
+                                                                                // font-awesome library the 'loadIcons' option can be set to false
+                                                                                // and the menu will not attempt to load the font-awesome library.
+                                                                                loadIcons: false
+    },
+    chalkboard: {
+        toggleChalkboardButton: { left: "60px", bottom: "30px", top: "auto", right: "auto" },
+        toggleNotesButton: { left: "90px", bottom: "30px", top: "auto", right: "auto" },
+
+    }
+    });
+
+
+
+</script>
+</body>
+
+</html>
