@@ -655,7 +655,18 @@
     
         <section >
             
-            <h2><a id="user-content-ここまでwikipedia調べ" class="anchor" href="#ここまでwikipedia調べ" aria-hidden="true"></a>ここまでWikipedia調べ</h2>
+            <h3><a id="user-content-ここまでwikipedia調べ" class="anchor" href="#ここまでwikipedia調べ" aria-hidden="true"></a>※ここまでWikipedia調べ🤐</h3>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h3><a id="user-content-mvvmパターン図解" class="anchor" href="#mvvmパターン図解" aria-hidden="true"></a>MVVMパターン図解</h3>
+<p><img src="./img/0a-0.png" alt="MVVMパターン図解"></p>
 
             </section>
     
@@ -675,6 +686,285 @@
     
         <section >
             
+            <h2><a id="user-content-実際のプロジェクトの用意-1" class="anchor" href="#実際のプロジェクトの用意-1" aria-hidden="true"></a>実際のプロジェクトの用意</h2>
+<ul>
+<li>まずはオモムロにプロジェクトを作成します</li>
+</ul>
+<p><img src="./img/1-0.png" alt="create-project"></p>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-実際のプロジェクトの用意-2" class="anchor" href="#実際のプロジェクトの用意-2" aria-hidden="true"></a>実際のプロジェクトの用意</h2>
+<ul>
+<li>まずはオモムロにプロジェクトを作成します</li>
+</ul>
+<p><img src="./img/1-1.png" alt="create-project"></p>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-実際のプロジェクトの用意-3" class="anchor" href="#実際のプロジェクトの用意-3" aria-hidden="true"></a>実際のプロジェクトの用意</h2>
+<ul>
+<li>まずはオモムロにプロジェクトを作成します</li>
+</ul>
+<p><img src="./img/1-2.png" alt="create-project"></p>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-実際のプロジェクトの用意-4" class="anchor" href="#実際のプロジェクトの用意-4" aria-hidden="true"></a>実際のプロジェクトの用意</h2>
+<ul>
+<li>ここまでひとまずできればOK</li>
+</ul>
+<p><img src="./img/1-3.png" alt="create-project"></p>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-実際のプロジェクトの用意-5" class="anchor" href="#実際のプロジェクトの用意-5" aria-hidden="true"></a>実際のプロジェクトの用意</h2>
+<ul>
+<li>これもやっておいてください(その1)。。</li>
+</ul>
+<p><img src="./img/1-4.png" alt="create-project"></p>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h3><a id="user-content-これもやっておいてくださいその1" class="anchor" href="#これもやっておいてくださいその1" aria-hidden="true"></a>これもやっておいてください(その1)</h3>
+<ul>
+<li>build.gradle(Project)に対して
+<ul>
+<li>dependenciesに以下を追加</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-gradle">// @Serializableを有効
+classpath &quot;org.jetbrains.kotlin:kotlin-serialization:$kotlin_version&quot;
+</code></pre>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-実際のプロジェクトの用意-6" class="anchor" href="#実際のプロジェクトの用意-6" aria-hidden="true"></a>実際のプロジェクトの用意</h2>
+<ul>
+<li>これもやっておいてください(その2)。。</li>
+</ul>
+<p><img src="./img/1-5.png" alt="create-project"></p>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h3><a id="user-content-これもやっておいてくださいその2" class="anchor" href="#これもやっておいてくださいその2" aria-hidden="true"></a>これもやっておいてください(その2)</h3>
+<ul>
+<li>build.gradle(App)に対して
+<ul>
+<li>一番上に以下を追加</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-gradle">apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+</code></pre>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h3><a id="user-content-これもやっておいてくださいその2-1" class="anchor" href="#これもやっておいてくださいその2-1" aria-hidden="true"></a>これもやっておいてください(その2)</h3>
+<ul>
+<li>build.gradle(App)に対して
+<ul>
+<li>android に以下を追加</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-gradle">// データバインディング/ビューバインディングの有効化
+dataBinding {
+  enabled = true
+}
+viewBinding {
+  enabled = true
+}
+// 使用するJDKのバージョンを1.8にあげる
+combileOptions {
+  sourceCompatibility &quot;1.8&quot;
+  targetCompatibility &quot;1.8&quot;
+}
+kotlinOptions {
+  jvmTarget = &quot;1.8&quot;
+}
+
+</code></pre>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h3><a id="user-content-これもやっておいてくださいその2-2" class="anchor" href="#これもやっておいてくださいその2-2" aria-hidden="true"></a>これもやっておいてください(その2)</h3>
+<ul>
+<li>build.gradle(App)に対して
+<ul>
+<li>dependencies に以下を追加</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-gradle">implementation fileTree(dir: &quot;libs&quot;, include: [&quot;*.jar&quot;])
+implementation &quot;org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version&quot;
+implementation 'androidx.core:core-ktx:1.3.1'
+implementation 'androidx.appcompat:appcompat:1.2.0'
+implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
+implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
+implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+implementation &quot;androidx.fragment:fragment-ktx:1.2.5&quot;
+testImplementation 'junit:junit:4.12'
+androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+implementation &quot;org.jetbrains.kotlinx:kotlinx-serialization-runtime:0.10.0&quot;
+
+implementation &quot;org.jetbrains.kotlin:kotlin-reflect:$kotlin_version&quot;
+
+//layout
+implementation 'androidx.appcompat:appcompat:1.2.0'
+implementation 'com.google.android.material:material:1.2.1'
+implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
+implementation 'androidx.cardview:cardview:1.0.0'
+implementation 'androidx.recyclerview:recyclerview:1.1.0'
+
+// retrofit
+implementation 'com.squareup.retrofit2:retrofit:2.6.0'
+
+// moshi
+def moshi_version = &quot;1.5.0&quot;
+implementation &quot;com.squareup.moshi:moshi:$moshi_version&quot;
+implementation &quot;com.squareup.moshi:moshi-kotlin:$moshi_version&quot;
+implementation &quot;com.squareup.retrofit2:converter-moshi:2.4.0&quot;
+
+// Android Architecture Components
+implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+implementation 'androidx.lifecycle:lifecycle-runtime:2.2.0'
+annotationProcessor 'androidx.lifecycle:lifecycle-common-java8:2.2.0'
+
+//viewmodel-ktx viewModelScopeを使うため
+implementation &quot;androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0&quot;
+
+// OkHttp
+implementation &quot;com.squareup.okhttp3:okhttp:3.12.11&quot;
+implementation &quot;com.squareup.okhttp3:logging-interceptor:3.12.1&quot;
+implementation &quot;org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version&quot;
+
+//Kotlin Coroutines
+implementation &quot;org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.7&quot;
+implementation &quot;org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.7&quot;
+
+// glide
+implementation 'com.github.bumptech.glide:glide:4.9.0'
+annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
+
+kapt &quot;com.android.databinding:compiler:3.1.4&quot;
+</code></pre>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h3><a id="user-content-これもやっておいてくださいその2-3" class="anchor" href="#これもやっておいてくださいその2-3" aria-hidden="true"></a>これもやっておいてください(その2)</h3>
+<h4><a id="user-content-正直いちいち手入力するのめんどいので配布します" class="anchor" href="#正直いちいち手入力するのめんどいので配布します" aria-hidden="true"></a>正直いちいち手入力するのめんどいので配布します</h4>
+<ul>
+<li>なんならスライド内に収まっていない</li>
+<li>コピペしてください</li>
+</ul>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h3><a id="user-content-これもやっておいてくださいその3" class="anchor" href="#これもやっておいてくださいその3" aria-hidden="true"></a>これもやっておいてください(その3)</h3>
+<ul>
+<li>AndroidManifest.xmlに
+<ul>
+<li><code>&lt;/application&gt;</code>の下あたりに以下を追加</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-xml">&lt;uses-permission android:name=&quot;android.permission.INTERNET&quot;/&gt;
+&lt;uses-permission android:name=&quot;android.permission.ACCESS_NETWORK_STATE&quot;/&gt;
+</code></pre>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h3><a id="user-content-gradle-syncing-time" class="anchor" href="#gradle-syncing-time" aria-hidden="true"></a>Gradle Syncing Time</h3>
+<p><img src="./img/1-6.png" alt="Sync Gradle">
+<img src="./img/1-7.png" alt="Whale Watching Time"></p>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
             <h2><a id="user-content-api通信インターフェース--repository--の作成" class="anchor" href="#api通信インターフェース--repository--の作成" aria-hidden="true"></a>API通信インターフェース (<code>Repository</code>) の作成</h2>
 
             </section>
@@ -685,7 +975,918 @@
     
         <section >
             
-            <h2><a id="user-content-最初のビュー--mainfragment--mainviewmodel--の作成" class="anchor" href="#最初のビュー--mainfragment--mainviewmodel--の作成" aria-hidden="true"></a>最初のビュー (<code>MainFragment</code> / <code>MainViewModel</code>) の作成</h2>
+            <h3><a id="user-content-repository-とは" class="anchor" href="#repository-とは" aria-hidden="true"></a>Repository #とは</h3>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h3><a id="user-content-repository-とは-1" class="anchor" href="#repository-とは-1" aria-hidden="true"></a>Repository #とは</h3>
+<ul>
+<li>ViewModelから実行されるデータの取得部分</li>
+</ul>
+<p><img src="./img/0a-0.png" alt="MVVMパターン図解"></p>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-api通信インターフェース--repository--の作成-1" class="anchor" href="#api通信インターフェース--repository--の作成-1" aria-hidden="true"></a>API通信インターフェース (<code>Repository</code>) の作成</h2>
+<ul>
+<li>まずPackageを作る</li>
+</ul>
+<p><img src="./img/2-0.png" alt="Package作成"></p>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-api通信インターフェース--repository--の作成-2" class="anchor" href="#api通信インターフェース--repository--の作成-2" aria-hidden="true"></a>API通信インターフェース (<code>Repository</code>) の作成</h2>
+<ul>
+<li>まずPackageを作る</li>
+</ul>
+<p><img src="./img/2-1.png" alt="Package作成">
+<img src="./img/2-2.png" alt="Package作成"></p>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-api通信インターフェース--repository--の作成-3" class="anchor" href="#api通信インターフェース--repository--の作成-3" aria-hidden="true"></a>API通信インターフェース (<code>Repository</code>) の作成</h2>
+<ul>
+<li>RecruitAPIを元にレスポンス用のモデルを用意する
+<ul>
+<li><a href="https://webservice.recruit.co.jp/doc/carsensor/reference.html#a1to">https://webservice.recruit.co.jp/doc/carsensor/reference.html#a1to</a></li>
+</ul>
+</li>
+</ul>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-api通信インターフェース--repository--の作成-4" class="anchor" href="#api通信インターフェース--repository--の作成-4" aria-hidden="true"></a>API通信インターフェース (<code>Repository</code>) の作成</h2>
+<ul>
+<li>RecruitAPIを元にレスポンス用のモデルを用意する
+<ul>
+<li>これやってるだけで2時間余裕で<s>潰した</s>潰れるので、配布します</li>
+<li><code>models</code> 以下に配置してください</li>
+<li><code>package</code> あたりは適宜変更しておいてください</li>
+</ul>
+</li>
+</ul>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h3><a id="user-content-data-class-とは" class="anchor" href="#data-class-とは" aria-hidden="true"></a><code>data class</code> #とは</h3>
+<ul>
+<li>クラス定義の方法のひとつ</li>
+<li><code>data class</code> を使用すると、以下が自動的に定義される
+<ul>
+<li><code>equals()</code> / <code>hashCode()</code> のペア：オブジェクトの比較の際に使用</li>
+<li>プロパティも含んだ形式の <code>toString()</code> メソッド：次節で例示</li>
+<li><code>componentN()</code> メソッド：宣言した順番でプロパティを取り出すことができるメソッド</li>
+<li><code>copy()</code> メソッド：完全に別のインスタンスとして、そのオブジェクトと全く同じオブジェクトを作成するメソッド</li>
+</ul>
+</li>
+</ul>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-api通信インターフェース--repository--の作成-5" class="anchor" href="#api通信インターフェース--repository--の作成-5" aria-hidden="true"></a>API通信インターフェース (<code>Repository</code>) の作成</h2>
+<ul>
+<li>定数クラスを作成する</li>
+</ul>
+<p><img src="./img/2-1a.png" alt="定数クラス作成">
+<img src="./img/2-1b.png" alt="定数クラス作成"></p>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-api通信インターフェース--repository--の作成-6" class="anchor" href="#api通信インターフェース--repository--の作成-6" aria-hidden="true"></a>API通信インターフェース (<code>Repository</code>) の作成</h2>
+<ul>
+<li>定数クラスを作成する
+<ul>
+<li>API_KEYの部分は適宜生成したキーを入れてください</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-kotlin">package com.example.mycarsensorapp
+
+class Constant {
+    companion object {
+        // API通信のベースURL
+        const val BASE_URL = &quot;https://webservice.recruit.co.jp/carsensor/&quot;
+        // APIアクセス用キー
+        const val API_KEY = &quot;&quot;
+        // カーセンサーAPIのURL
+        const val CARSENSOR_URL = &quot;http://webservice.recruit.co.jp/&quot;
+    }
+}
+</code></pre>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h3><a id="user-content-companion-object-とは" class="anchor" href="#companion-object-とは" aria-hidden="true"></a><code>companion object</code> #とは</h3>
+<ul>
+<li><code>object</code> キーワードと同じく、Singletonを作成するキーワード</li>
+<li><code>object</code> と異なり、クラスに属します</li>
+</ul>
+<h4><a id="user-content-kotlinに-static-は存在しないので、-static-を使用したい場合は-object-または-companion-object-を使用します" class="anchor" href="#kotlinに-static-は存在しないので、-static-を使用したい場合は-object-または-companion-object-を使用します" aria-hidden="true"></a>※Kotlinに <code>static</code> は存在しないので、 <code>static</code> を使用したい場合は <code>object</code> または <code>companion object</code> を使用します</h4>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-api通信インターフェース--repository--の作成-7" class="anchor" href="#api通信インターフェース--repository--の作成-7" aria-hidden="true"></a>API通信インターフェース (<code>Repository</code>) の作成</h2>
+<ul>
+<li>通信用インターフェースを作る</li>
+</ul>
+<p><img src="./img/2-3.png" alt="通信用インターフェース作成"></p>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-api通信インターフェース--repository--の作成-8" class="anchor" href="#api通信インターフェース--repository--の作成-8" aria-hidden="true"></a>API通信インターフェース (<code>Repository</code>) の作成</h2>
+<ul>
+<li>通信用インターフェースを作る</li>
+</ul>
+<p><img src="./img/2-4.png" alt="通信用インターフェース作成"></p>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-api通信インターフェース--repository--の作成-9" class="anchor" href="#api通信インターフェース--repository--の作成-9" aria-hidden="true"></a>API通信インターフェース (<code>Repository</code>) の作成</h2>
+<ul>
+<li>通信用インターフェースを作る
+<ul>
+<li>試しにブランドの一覧を取得するものを実装してみましょう</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-kotlin">interface APIService {
+    // APIアクセスするエンドポイントの指定
+    @GET(&quot;brand/v1/&quot;)
+    // 引数にリクエストパラメータ、レスポンスには Call&lt;T&gt;を指定すること
+    // (Tは任意のレスポンスされたいオブジェクト)
+    fun getBrandMaster(
+        @Query(&quot;key&quot;) key: String = Constant.API_KEY,
+        @Query(&quot;format&quot;) format: String = &quot;json&quot;
+    ): Call&lt;BrandMasterRootResponseModel&gt;
+}
+</code></pre>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-api通信インターフェース--repository--の作成-10" class="anchor" href="#api通信インターフェース--repository--の作成-10" aria-hidden="true"></a>API通信インターフェース (<code>Repository</code>) の作成</h2>
+<ul>
+<li>通信用リポジトリクラスを作る</li>
+</ul>
+<p><img src="./img/2-5.png" alt="通信用リポジトリ作成">
+<img src="./img/2-6.png" alt="通信用リポジトリ作成"></p>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-api通信インターフェース--repository--の作成-11" class="anchor" href="#api通信インターフェース--repository--の作成-11" aria-hidden="true"></a>API通信インターフェース (<code>Repository</code>) の作成</h2>
+<ul>
+<li>通信用リポジトリクラスを作る</li>
+</ul>
+<pre><code class="language-kotlin">class Repository {
+    private val retrofit = Retrofit.Builder()
+        .baseUrl(Constant.BASE_URL)
+        .addConverterFactory(MoshiConverterFactory.create())
+        .build()
+
+    private val service = retrofit.create(ICarsensorAPIService::class.java)
+    // 実際にリクエストを行うメソッド
+    // 戻り値は先のインターフェースに合わせて必ず Call&lt;T&gt;
+    // (Tは任意のレスポンスされたいオブジェクト)
+    suspend fun getBrands(): Call&lt;BrandMasterRootResponseModel&gt; = service.getBrandMaster()
+
+    // リポジトリクラスのインスタンス作成
+    companion object Factory {
+        val instance: Repository
+            @Synchronized get() {
+                return Repository()
+            }
+    }
+}
+</code></pre>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h3><a id="user-content-retrofit2-とは" class="anchor" href="#retrofit2-とは" aria-hidden="true"></a>Retrofit2 #とは</h3>
+<ul>
+<li>OkHttp3のレスポンスのラッパー</li>
+<li>コールバックを書きやすくしてくれます</li>
+<li>レスポンスの内容から実際のPOJOに対してORマッピングしてくれたりもしてくれます</li>
+</ul>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h3><a id="user-content-suspend-fun-とは" class="anchor" href="#suspend-fun-とは" aria-hidden="true"></a><code>suspend fun</code> #とは</h3>
+<ul>
+<li>Kotlinの非同期処理のひとつ</li>
+<li>この関数定義内の処理は中断される可能性がある</li>
+<li>この関数を使用する際、呼び元は <code>Scope.launch { ... }</code> 内(別スレッド)から呼ぶ
+<ul>
+<li>別スレッドで呼ぶことができる -&gt; 非同期処理となる</li>
+</ul>
+</li>
+</ul>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-api通信インターフェース--repository--の作成-12" class="anchor" href="#api通信インターフェース--repository--の作成-12" aria-hidden="true"></a>API通信インターフェース (<code>Repository</code>) の作成</h2>
+<ul>
+<li>作ったインターフェースを試してみたい。。。！
+<ul>
+<li>では実際に描画する箇所を作成していきましょう</li>
+</ul>
+</li>
+</ul>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-最初の-viewviewmodel--mainfragment--mainviewmodel--の作成" class="anchor" href="#最初の-viewviewmodel--mainfragment--mainviewmodel--の作成" aria-hidden="true"></a>最初の View/ViewModel (<code>MainFragment</code> / <code>MainViewModel</code>) の作成</h2>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-最初の-viewviewmodel-の作成" class="anchor" href="#最初の-viewviewmodel-の作成" aria-hidden="true"></a>最初の View/ViewModel の作成</h2>
+<h3><a id="user-content-以下の手順で実装していきます" class="anchor" href="#以下の手順で実装していきます" aria-hidden="true"></a>以下の手順で実装していきます</h3>
+<ul>
+<li>Viewの作成</li>
+<li>ViewModelの作成</li>
+<li>Spinnerの作成</li>
+<li>検索ボタンの実装</li>
+<li>検索結果リストの実装</li>
+</ul>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-viewviewmodel-の作成" class="anchor" href="#viewviewmodel-の作成" aria-hidden="true"></a>View/ViewModel の作成</h2>
+<h3><a id="user-content-viewの作成" class="anchor" href="#viewの作成" aria-hidden="true"></a>Viewの作成</h3>
+<ul>
+<li>まず、Viewを作成します</li>
+<li>以下の4つが実装されていればいいです
+<ul>
+<li>検索ワードを入れる <code>EditText</code></li>
+<li>ブランドを選択する <code>Spinner</code></li>
+<li>検索ボタンの <code>Button</code></li>
+<li>検索結果を表示させる <code>RecyclerView</code></li>
+</ul>
+</li>
+</ul>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-viewviewmodel-の作成-1" class="anchor" href="#viewviewmodel-の作成-1" aria-hidden="true"></a>View/ViewModel の作成</h2>
+<h3><a id="user-content-viewの作成-1" class="anchor" href="#viewの作成-1" aria-hidden="true"></a>Viewの作成</h3>
+<p><img src="./img/3-0.png" alt="MainView"></p>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-viewviewmodel-の作成-2" class="anchor" href="#viewviewmodel-の作成-2" aria-hidden="true"></a>View/ViewModel の作成</h2>
+<h3><a id="user-content-viewmodelの作成" class="anchor" href="#viewmodelの作成" aria-hidden="true"></a>ViewModelの作成</h3>
+<ul>
+<li>ViewModelでは実際の通信処理の実行と、そのレスポンスの保持を行います</li>
+</ul>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-viewviewmodel-の作成-3" class="anchor" href="#viewviewmodel-の作成-3" aria-hidden="true"></a>View/ViewModel の作成</h2>
+<h3><a id="user-content-viewmodelの作成-1" class="anchor" href="#viewmodelの作成-1" aria-hidden="true"></a>ViewModelの作成</h3>
+<ul>
+<li>ViewModelは <code>AndroidViewModel</code> を継承させましょう</li>
+<li>この時、コンストラクタ引数の名前を <code>aplication</code> にすると、 <strong>既存プロパティの名前と競合して謎のコンパイルエラーを引き起こしますので注意</strong></li>
+</ul>
+<pre><code class="language-kotlin">class MainViewModel(
+    private val myApplication: Application
+): AndroidViewModel(myApplication) {
+</code></pre>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-viewviewmodel-の作成-4" class="anchor" href="#viewviewmodel-の作成-4" aria-hidden="true"></a>View/ViewModel の作成</h2>
+<h3><a id="user-content-viewmodelの作成-2" class="anchor" href="#viewmodelの作成-2" aria-hidden="true"></a>ViewModelの作成</h3>
+<ul>
+<li>まず、実際にデータを取ってくる処理を記述します</li>
+</ul>
+<pre><code class="language-kotlin">class MainViewModel(
+    private val myApplication: Application
+): AndroidViewModel(myApplication) {
+    private val _repository = Repository.instance
+    var brandsLiveData: MutableLiveData&lt;List&lt;BrandModel&gt;&gt; =
+      MutableLiveData()
+
+    init {
+        loadLiveData()
+    }
+
+    // loadLiveData()
+}
+</code></pre>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-viewviewmodel-の作成-5" class="anchor" href="#viewviewmodel-の作成-5" aria-hidden="true"></a>View/ViewModel の作成</h2>
+<h3><a id="user-content-viewmodelの作成-3" class="anchor" href="#viewmodelの作成-3" aria-hidden="true"></a>ViewModelの作成</h3>
+<ul>
+<li>まず、実際にデータを取ってくる処理を記述します</li>
+</ul>
+<pre><code class="language-kotlin">    // loadLiveData()
+    private fun loadLiveData() {
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                val brandsRequest = _repository.getBrands()
+                val brandsResponse = brandsRequest.execute()
+                if (brandsResponse.isSuccessful) {
+                    val mutableBrands = brandsResponse.body()?.results?.brand?.toMutableList()
+                    mutableBrands?.add(0, BrandModel(&quot;&quot;, &quot;&lt; 未選択 &gt;&quot;, CodeNamePair(&quot;&quot;, &quot;&quot;)))
+                    brandsLiveData.postValue(mutableBrands)
+                }
+            } catch (ex: Exception) {
+                ex.printStackTrace()
+            }
+        }
+    }
+</code></pre>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-viewviewmodel-の作成-6" class="anchor" href="#viewviewmodel-の作成-6" aria-hidden="true"></a>View/ViewModel の作成</h2>
+<h3><a id="user-content-viewmodelの作成-4" class="anchor" href="#viewmodelの作成-4" aria-hidden="true"></a>ViewModelの作成</h3>
+<h4><a id="user-content-mutablelivedatat" class="anchor" href="#mutablelivedatat" aria-hidden="true"></a><code>MutableLiveData&lt;T&gt;</code></h4>
+<ul>
+<li>実際のViewに渡したいデータを保持する変数に使用する型</li>
+</ul>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-viewviewmodel-の作成-7" class="anchor" href="#viewviewmodel-の作成-7" aria-hidden="true"></a>View/ViewModel の作成</h2>
+<h3><a id="user-content-viewmodelの作成-5" class="anchor" href="#viewmodelの作成-5" aria-hidden="true"></a>ViewModelの作成</h3>
+<h4><a id="user-content-viewmodelscopelaunchdispatchersio---" class="anchor" href="#viewmodelscopelaunchdispatchersio---" aria-hidden="true"></a><code>viewModelScope.launch(Dispatchers.IO) { ... }</code></h4>
+<ul>
+<li>先ほど説明した、 <code>suspend</code> 関数をコールするためのスレッドみたいなものです</li>
+<li><code>Dispatchers.IO</code> を指定することで、メインスレッド(描画スレッド)以外のIOスレッドで実行することを指定しています</li>
+</ul>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-viewviewmodel-の作成-8" class="anchor" href="#viewviewmodel-の作成-8" aria-hidden="true"></a>View/ViewModel の作成</h2>
+<h3><a id="user-content-viewの作成-2" class="anchor" href="#viewの作成-2" aria-hidden="true"></a>Viewの作成</h3>
+<h4><a id="user-content-spinner用のadapterの作成" class="anchor" href="#spinner用のadapterの作成" aria-hidden="true"></a>Spinner用のAdapterの作成</h4>
+<pre><code class="language-kotlin">class BrandArrayAdapter(
+    context: Context,
+    resource: Int,
+    models: List&lt;BrandModel&gt;
+) : ArrayAdapter&lt;BrandModel&gt;(context, resource, models) {
+
+    override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
+        val textView = super.getView(position, convertView, parent) as TextView
+        textView.text = getItem(position)?.name
+
+        return textView
+    }
+
+    override fun getDropDownView(position: Int, convertView: View?, parent: ViewGroup): View {
+        val textView = super.getDropDownView(position, convertView, parent) as TextView
+        textView.text = getItem(position)?.name
+
+        return textView
+    }
+}
+</code></pre>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-viewviewmodel-の作成-9" class="anchor" href="#viewviewmodel-の作成-9" aria-hidden="true"></a>View/ViewModel の作成</h2>
+<h3><a id="user-content-viewの作成-3" class="anchor" href="#viewの作成-3" aria-hidden="true"></a>Viewの作成</h3>
+<pre><code class="language-kotlin">override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    super.onViewCreated(view, savedInstanceState)
+    viewModel.brandsLiveData.observe(viewLifecycleOwner, Observer { brands -&gt;
+        // データが更新されたら、自動的にこの中に入ってくる
+        // brands が取得してきたデータ
+        brands?.let {
+            // SpinnerのAdapterに取ってきたデータと合わせてAdapterをセット
+            main__spinner_brand.adapter = context?.let { it1 -&gt;
+                BrandArrayAdapter(it1, android.R.layout.simple_spinner_item, brands)
+            }
+        }
+    })
+}
+</code></pre>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-viewviewmodel-の作成-10" class="anchor" href="#viewviewmodel-の作成-10" aria-hidden="true"></a>View/ViewModel の作成</h2>
+<ul>
+<li>こんな感じにアプリが実行できればOKです</li>
+</ul>
+<p><img src="./img/3-1.png" alt="アプリ実行テスト"></p>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-viewviewmodel-の作成-11" class="anchor" href="#viewviewmodel-の作成-11" aria-hidden="true"></a>View/ViewModel の作成</h2>
+<h3><a id="user-content-検索ボタンの実装" class="anchor" href="#検索ボタンの実装" aria-hidden="true"></a>検索ボタンの実装</h3>
+<ul>
+<li>まずRepositoryに中古車検索を追加
+<ul>
+<li>のでInterfaceに新しい関数を追加する</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-kotlin">interface APIService {
+    @GET(&quot;usedcar/v1/&quot;)
+    fun getCars(
+        @Query(&quot;key&quot;) key: String = Constant.API_KEY,
+        @Query(&quot;brand&quot;) brand: String,
+        @Query(&quot;format&quot;) format: String = &quot;json&quot;
+    ): Call&lt;SearchCarRootResponseModel&gt;
+    // :
+    // :
+}
+</code></pre>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-viewviewmodel-の作成-12" class="anchor" href="#viewviewmodel-の作成-12" aria-hidden="true"></a>View/ViewModel の作成</h2>
+<h3><a id="user-content-検索ボタンの実装-1" class="anchor" href="#検索ボタンの実装-1" aria-hidden="true"></a>検索ボタンの実装</h3>
+<ul>
+<li>まずRepositoryに中古車検索を追加</li>
+</ul>
+<pre><code class="language-kotlin">class Repository {
+    // :
+    // :
+    suspend fun getCars(
+        key: String,
+        brand: String,
+    ): Call&lt;SearchCarRootResponseModel&gt; = service.getCars(key, brand, &quot;json&quot;)
+    // :
+    // :
+}
+</code></pre>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-viewviewmodel-の作成-13" class="anchor" href="#viewviewmodel-の作成-13" aria-hidden="true"></a>View/ViewModel の作成</h2>
+<h3><a id="user-content-検索ボタンの実装-2" class="anchor" href="#検索ボタンの実装-2" aria-hidden="true"></a>検索ボタンの実装</h3>
+<ul>
+<li>ViewModelで実際に検索APIを叩く関数を実装する</li>
+</ul>
+<pre><code class="language-kotlin">class MainViewModel(
+    private val myApplication: Application
+): AndroidViewModel(myApplication) {
+    // :
+    // :
+    fun fetchUsedCarLiveData(name: String, brandCode: String) {
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                val request = _repository.getCars( Constant.API_KEY, brandCode)
+                val response = request.execute()
+                if (response.isSuccessful) {
+                    carsLiveData.postValue(response.body()?.results?.usedcar)
+                }
+            } catch (ex: java.lang.Exception) {
+                ex.printStackTrace()
+            }
+        }
+    }
+    // :
+    // :
+}
+</code></pre>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-viewviewmodel-の作成-14" class="anchor" href="#viewviewmodel-の作成-14" aria-hidden="true"></a>View/ViewModel の作成</h2>
+<h3><a id="user-content-検索ボタンの実装-3" class="anchor" href="#検索ボタンの実装-3" aria-hidden="true"></a>検索ボタンの実装</h3>
+<ul>
+<li>実際に叩くListenerを作る</li>
+</ul>
+<pre><code class="language-kotlin">class MainFragment : Fragment() {
+    // :
+    // :
+    private val onSearchButtonClickListener = View.OnClickListener {
+        viewModel.fetchUsedCarLiveData(
+            main__edittext_used_car_name.text.toString(),
+            (main__spinner_brand.selectedItem as BrandModel).code)
+    }
+    // :
+    // :
+}
+</code></pre>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-viewviewmodel-の作成-15" class="anchor" href="#viewviewmodel-の作成-15" aria-hidden="true"></a>View/ViewModel の作成</h2>
+<h3><a id="user-content-検索ボタンの実装-4" class="anchor" href="#検索ボタンの実装-4" aria-hidden="true"></a>検索ボタンの実装</h3>
+<ul>
+<li>検索ボタンが叩かれた後、実際にデータを受け取る場所をモック実装でつくる</li>
+</ul>
+<pre><code class="language-kotlin">override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    super.onViewCreated(view, savedInstanceState)
+    viewModel.carsLiveData.observe(viewLifecycleOwner, Observer { cars -&gt;
+        cars?.let {
+            var message = &quot;&quot;
+            for (car in cars) {
+                message += car.brand.name + &quot;: &quot; + car.model.toString() + &quot;¥n&quot;
+            }
+            AlertDialog.Builder(context)
+                .setTitle(&quot;検索結果&quot;)
+                .setMessage(message)
+                .setPositiveButton(&quot;OK&quot;){ dialog, which -&gt; }
+                .show()
+        }
+    })
+}
+</code></pre>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-viewviewmodel-の作成-16" class="anchor" href="#viewviewmodel-の作成-16" aria-hidden="true"></a>View/ViewModel の作成</h2>
+<h3><a id="user-content-検索ボタンの実装-5" class="anchor" href="#検索ボタンの実装-5" aria-hidden="true"></a>検索ボタンの実装</h3>
+<ul>
+<li>Bindingに繋ぎ込む</li>
+</ul>
+<pre><code class="language-kotlin">private lateinit var binding: MainFragmentBinding
+
+override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
+                          savedInstanceState: Bundle?): View {
+    binding = MainFragmentBinding.inflate(inflater, container, false)
+    binding.apply {
+        onClickSerarch = onSearchButtonClickListener
+    }
+    return binding.root
+}
+</code></pre>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-viewviewmodel-の作成-17" class="anchor" href="#viewviewmodel-の作成-17" aria-hidden="true"></a>View/ViewModel の作成</h2>
+<h3><a id="user-content-検索ボタンの実装-6" class="anchor" href="#検索ボタンの実装-6" aria-hidden="true"></a>検索ボタンの実装</h3>
+<ul>
+<li>実際に叩けるように繋ぎ込む</li>
+</ul>
+<pre><code class="language-xml">&lt;data&gt;
+    &lt;import type=&quot;android.view.View&quot;/&gt;
+    &lt;variable name=&quot;isOpen&quot; type=&quot;boolean&quot; /&gt;
+    &lt;variable name=&quot;isLoading&quot; type=&quot;boolean&quot; /&gt;
+    &lt;variable name=&quot;onClickSearch&quot; type=&quot;android.view.View.OnClickListener&quot; /&gt;
+
+&lt;/data&gt;
+</code></pre>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-viewviewmodel-の作成-18" class="anchor" href="#viewviewmodel-の作成-18" aria-hidden="true"></a>View/ViewModel の作成</h2>
+<h3><a id="user-content-検索ボタンの実装-7" class="anchor" href="#検索ボタンの実装-7" aria-hidden="true"></a>検索ボタンの実装</h3>
+<ul>
+<li>実際に叩けるように繋ぎ込む</li>
+</ul>
+<pre><code class="language-xml">&lt;!-- 上で指定したonClickSearchをこっちでも指定する --&gt;
+&lt;Button
+    android:id=&quot;@+id/main__button_search&quot;
+    android:layout_width=&quot;wrap_content&quot;
+    android:layout_height=&quot;wrap_content&quot;
+    android:layout_margin=&quot;10dp&quot;
+    android:layout_gravity=&quot;center&quot;
+    android:text=&quot;@string/search&quot;
+    android:onClick=&quot;@{onClickSearch}&quot;
+    /&gt;
+</code></pre>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-viewviewmodel-の作成-19" class="anchor" href="#viewviewmodel-の作成-19" aria-hidden="true"></a>View/ViewModel の作成</h2>
+<h3><a id="user-content-検索ボタンの実装-8" class="anchor" href="#検索ボタンの実装-8" aria-hidden="true"></a>検索ボタンの実装</h3>
+<ul>
+<li>実行するとこうなります</li>
+</ul>
+<p><img src="./img/3-3.png" alt="実行結果"></p>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-viewviewmodel-の作成-20" class="anchor" href="#viewviewmodel-の作成-20" aria-hidden="true"></a>View/ViewModel の作成</h2>
+<h3><a id="user-content-検索結果リストの実装" class="anchor" href="#検索結果リストの実装" aria-hidden="true"></a>検索結果リストの実装</h3>
+<ul>
+<li>RecylerViewに表示するAdapterを作成する
+<ul>
+<li>まずはView(xml)から</li>
+</ul>
+</li>
+</ul>
+<p><img src="./img/3-2.png" alt="RecylerViewのなかみ"></p>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-viewviewmodel-の作成-21" class="anchor" href="#viewviewmodel-の作成-21" aria-hidden="true"></a>View/ViewModel の作成</h2>
+<h3><a id="user-content-検索結果リストの実装-1" class="anchor" href="#検索結果リストの実装-1" aria-hidden="true"></a>検索結果リストの実装</h3>
+<ul>
+<li>Adapter
+<ul>
+<li>各分量多すぎるのでこちらは配布します</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-kotlin">class UsedCarAdapter(
+    private val usedCarClickCallback: UsedCarClickCallback
+) : RecyclerView.Adapter&lt;UsedCarAdapter.UsedCarViewHolder&gt;() {
+
+    private var _usedCars: List&lt;UsedCarModel&gt;? = null
+
+    fun setUsedCars(usedCars: List&lt;UsedCarModel&gt;) {
+
+        if (this._usedCars == null) {
+            this._usedCars = usedCars
+
+            notifyItemRangeInserted(0, usedCars.size)
+
+        } else {
+
+            val result = DiffUtil.calculateDiff(object : DiffUtil.Callback() {
+                override fun getOldListSize(): Int {
+                    return requireNotNull(this@UsedCarAdapter._usedCars).size
+                }
+
+                override fun getNewListSize(): Int {
+                    return usedCars.size
+                }
+
+                override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+                    val oldList = this@UsedCarAdapter._usedCars
+                    return oldList?.get(oldItemPosition)?.model == usedCars[newItemPosition].model
+                }
+
+                override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+                    val old = this@UsedCarAdapter._usedCars!![oldItemPosition]
+                    val new = this@UsedCarAdapter._usedCars!![newItemPosition]
+                    return old.model == new.model
+                }
+            })
+            this._usedCars = usedCars
+
+            result.dispatchUpdatesTo(this)
+        }
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewtype: Int): UsedCarViewHolder {
+        val binding =
+            DataBindingUtil.inflate(
+                LayoutInflater.from(parent.context),
+                R.layout.used_car_list_item,
+                parent,
+                false
+            ) as UsedCarListItemBinding
+
+        binding.callback = usedCarClickCallback
+
+        return UsedCarViewHolder(binding)
+    }
+
+    override fun onBindViewHolder(holder: UsedCarViewHolder, position: Int) {
+        holder.binding.usedCar = _usedCars?.get(position)
+        holder.binding.executePendingBindings()
+    }
+
+    override fun getItemCount(): Int {
+        return _usedCars?.size ?: 0
+    }
+
+    open class UsedCarViewHolder(val binding: UsedCarListItemBinding) : RecyclerView.ViewHolder(binding.root)
+}
+</code></pre>
 
             </section>
     
@@ -719,10 +1920,68 @@
 <ul>
 <li><a href="https://ja.wikipedia.org/wiki/Model_View_ViewModel">ModelViewViewModel - Wikipedia</a></li>
 <li><a href="https://ja.wikipedia.org/wiki/%E3%83%87%E3%83%BC%E3%82%BF%E3%83%90%E3%82%A4%E3%83%B3%E3%83%87%E3%82%A3%E3%83%B3%E3%82%B0">データバインディング - Wikipedia</a></li>
+<li><a href="https://developer.android.com/jetpack/guide?hl=ja">アプリ アーキテクチャ ガイド - AndroidDevelopers</a></li>
 <li><a href="https://qiita.com/Tsutou/items/69a28ebbd69b69e51703#view">Android Architecture Components 初級 （ MVVM + LiveData + Coroutines 編 ）- Qiita</a></li>
+</ul>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-参考資料等-2" class="anchor" href="#参考資料等-2" aria-hidden="true"></a>参考資料等</h2>
+<ul>
 <li><a href="https://developer.android.com/topic/libraries/view-binding?hl=ja">ビュー バインディング - AndroidDeveloper</a></li>
+<li><a href="https://qiita.com/izumin5210/items/2784576d86ce6b9b51e6">Butter Knife、今までありがとう。 Data Binding、これからよろしく。</a></li>
 <li><a href="https://teratail.com/questions/52200">ビルド時に&quot;エラー:パッケージhogehogetest.databindingは存在しません&quot;とエラーする - teratail</a></li>
+</ul>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-参考資料等-3" class="anchor" href="#参考資料等-3" aria-hidden="true"></a>参考資料等</h2>
+<ul>
 <li><a href="https://qiita.com/sadashi/items/fd902619f5b3491e969f">Kotlin Parcelable について - Qiita</a></li>
+<li><a href="https://qiita.com/ngsw_taro/items/d29e3080d9fc8a38691e">Kotlin スコープ関数 用途まとめ - Qiita</a></li>
+<li><a href="https://qiita.com/tkhs0604/items/261e94a42b7097dfd204#:~:text=companion%20object%20%E3%81%AF%E3%82%AF%E3%83%A9%E3%82%B9%E5%86%85,Singleton%E3%81%8C%E4%BD%9C%E6%88%90%E3%81%A7%E3%81%8D%E3%81%BE%E3%81%99%E3%80%82&amp;text=%E3%81%BE%E3%81%9F%E3%80%81%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E5%90%8D%E3%81%AF%E7%9C%81%E7%95%A5,%E3%81%97%E3%81%AA%E3%81%84%E3%81%93%E3%81%A8%E3%81%8C%E3%81%BB%E3%81%A8%E3%82%93%E3%81%A9%E3%81%A7%E3%81%99%E3%80%82">Kotlinのcompanion objectとは - Qiita</a></li>
+<li><a href="https://techacademy.jp/magazine/19797">Kotlinのdata class（データクラス）の使い方【初心者向け】 - TechAcademy</a></li>
+<li><a href="https://mahata.gitlab.io/post/2019-04-23-coroutines-kotlin/">Kotlin のコルーチン入門</a></li>
+</ul>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-参考資料等-4" class="anchor" href="#参考資料等-4" aria-hidden="true"></a>参考資料等</h2>
+<ul>
+<li><a href="https://qiita.com/mangano-ito/items/9b067916d1374d66b750">Fragment の Android-KTX が AAC ViewModel の取得に便利だ</a></li>
+<li><a href="https://qiita.com/kph7mgb/items/28ee37957976e80e38f219">Cannot inline bytecode built with JVM target 1.8 into bytecode that is being built with JVM target 1.6. Please specify proper ‘-jvm-target’ option</a></li>
+</ul>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-参考資料等-5" class="anchor" href="#参考資料等-5" aria-hidden="true"></a>参考資料等</h2>
+<ul>
+<li><a href="https://araramistudio.jimdo.com/2018/02/05/android%E3%81%AEspinner%E3%82%92%E3%82%B3%E3%83%BC%E3%83%89%E3%81%A8%E5%90%8D%E7%A7%B0%E3%81%A7%E7%AE%A1%E7%90%86%E3%81%97%E3%81%9F%E3%81%84%E6%99%82%E3%81%AFadapter%E3%82%92%E4%BD%BF%E3%81%8A%E3%81%86/">AndroidのSpinnerをコードと名称で管理したい時はAdapterを使おう</a></li>
+<li><a href="https://akira-watson.com/android/kotlin/spinner-simple.html">[Android &amp; Kotlin] プルダウンで項目選択できるSpinnerを設定</a></li>
 </ul>
 
             </section>
