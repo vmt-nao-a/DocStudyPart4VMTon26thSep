@@ -965,6 +965,25 @@ kapt &quot;com.android.databinding:compiler:3.1.4&quot;
     
         <section >
             
+            <h3><a id="user-content-kotlin-databinding-デバッグの心得" class="anchor" href="#kotlin-databinding-デバッグの心得" aria-hidden="true"></a>Kotlin (+DataBinding) デバッグの心得</h3>
+<ul>
+<li>(よくわからないエラーが多いけど)折れない</li>
+<li>(よくわからないエラーが多いけど)逃げない</li>
+<li>よくわからないエラー(<code>HogeFugaBindingImpl</code> のシンボルが解決できません) が出たら、まずView(xml)の実装を疑おう
+<ul>
+<li>設定しているプロパティが無いとかでも平気で <code>BindingImpl</code> のコンパイルをミスりやがってコンパイル時エラーを吐きやがる。。。</li>
+</ul>
+</li>
+</ul>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
             <h2><a id="user-content-api通信インターフェース--repository--の作成" class="anchor" href="#api通信インターフェース--repository--の作成" aria-hidden="true"></a>API通信インターフェース (<code>Repository</code>) の作成</h2>
 
             </section>
@@ -1795,7 +1814,7 @@ override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
             <h2><a id="user-content-viewviewmodel-の作成-20" class="anchor" href="#viewviewmodel-の作成-20" aria-hidden="true"></a>View/ViewModel の作成</h2>
 <h3><a id="user-content-検索結果リストの実装" class="anchor" href="#検索結果リストの実装" aria-hidden="true"></a>検索結果リストの実装</h3>
 <ul>
-<li>RecylerViewに表示するAdapterを作成する
+<li>RecylerViewに表示するAdapterを作成します
 <ul>
 <li>まずはView(xml)から</li>
 </ul>
@@ -1814,9 +1833,111 @@ override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
             <h2><a id="user-content-viewviewmodel-の作成-21" class="anchor" href="#viewviewmodel-の作成-21" aria-hidden="true"></a>View/ViewModel の作成</h2>
 <h3><a id="user-content-検索結果リストの実装-1" class="anchor" href="#検索結果リストの実装-1" aria-hidden="true"></a>検索結果リストの実装</h3>
 <ul>
+<li>xmlの中身はこのように定義しておきます
+<ul>
+<li><code>&lt;data&gt;</code> 定義がポイント</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-xml">&lt;layout
+    xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    xmlns:app=&quot;http://schemas.android.com/apk/res-auto&quot;
+    &gt;
+
+    &lt;data&gt;
+        &lt;variable name=&quot;usedCar&quot; type=&quot;com.example.mycarsensorapp.models.UsedCarModel&quot; /&gt;
+        &lt;variable name=&quot;callback&quot; type=&quot;com.example.mycarsensorapp.ui.callbacks.UsedCarClickCallback&quot; /&gt;
+    &lt;/data&gt;
+    &lt;!-- : --&gt;
+    &lt;!-- : --&gt;
+&lt;/layout&gt;
+</code></pre>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-viewviewmodel-の作成-22" class="anchor" href="#viewviewmodel-の作成-22" aria-hidden="true"></a>View/ViewModel の作成</h2>
+<h3><a id="user-content-検索結果リストの実装-2" class="anchor" href="#検索結果リストの実装-2" aria-hidden="true"></a>検索結果リストの実装</h3>
+<ul>
+<li>xmlの中身はこのように定義しておきます
+<ul>
+<li>onClickのコールバック呼び出しや</li>
+<li><code>app:imageUrl</code> のようなところで直接モデルの中身を参照させているのがポイント</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-xml">    &lt;!-- : --&gt;
+    &lt;!-- : --&gt;
+        &lt;androidx.cardview.widget.CardView
+        android:layout_width=&quot;match_parent&quot;
+        android:layout_height=&quot;100dp&quot;
+        android:orientation=&quot;horizontal&quot;
+        android:onClick=&quot;@{() -&gt;  callback.onClick(usedCar)}&quot;
+        android:layout_margin=&quot;10dp&quot;
+        app:cardUseCompatPadding=&quot;true&quot;&gt;
+        &lt;LinearLayout
+            android:layout_width=&quot;match_parent&quot;
+            android:layout_height=&quot;match_parent&quot;
+            android:onClick=&quot;@{() -&gt; callback.onClick(usedCar)}&quot;
+            &gt;
+            &lt;ImageView
+                android:id=&quot;@+id/used_car_list_item__imageview_thumbnail&quot;
+                android:layout_width=&quot;150dp&quot;
+                android:layout_height=&quot;match_parent&quot;
+                android:layout_margin=&quot;5dp&quot;
+                app:imageUrl=&quot;@{usedCar.photo.main.l}&quot;
+                /&gt;
+    &lt;!-- : --&gt;
+    &lt;!-- : --&gt;
+&lt;/layout&gt;
+</code></pre>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-viewviewmodel-の作成-23" class="anchor" href="#viewviewmodel-の作成-23" aria-hidden="true"></a>View/ViewModel の作成</h2>
+<h3><a id="user-content-検索結果リストの実装-3" class="anchor" href="#検索結果リストの実装-3" aria-hidden="true"></a>検索結果リストの実装</h3>
+<ul>
+<li>ClickCallback(Listener)
+<ul>
+<li>こんな感じで新たに作成します</li>
+<li>これで上で定義したxmlのエラーのひとつは解消されているはずです。。。</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-kotlin">package com.example.mycarsensorapp.ui.callbacks
+
+import com.example.mycarsensorapp.models.UsedCarModel
+
+interface UsedCarClickCallback {
+    fun onClick(usedCarModel: UsedCarModel)
+}
+</code></pre>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-viewviewmodel-の作成-24" class="anchor" href="#viewviewmodel-の作成-24" aria-hidden="true"></a>View/ViewModel の作成</h2>
+<h3><a id="user-content-検索結果リストの実装-4" class="anchor" href="#検索結果リストの実装-4" aria-hidden="true"></a>検索結果リストの実装</h3>
+<ul>
 <li>Adapter
 <ul>
-<li>各分量多すぎるのでこちらは配布します</li>
+<li>書く分量多すぎるのでこちらは配布します</li>
 </ul>
 </li>
 </ul>
@@ -1852,7 +1973,7 @@ override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                 override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
                     val old = this@UsedCarAdapter._usedCars!![oldItemPosition]
                     val new = this@UsedCarAdapter._usedCars!![newItemPosition]
-                    return old.model == new.model
+                    return old.model?.contentEquals(new.model)
                 }
             })
             this._usedCars = usedCars
@@ -1896,7 +2017,975 @@ override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
     
         <section >
             
+            <h2><a id="user-content-viewviewmodel-の作成-25" class="anchor" href="#viewviewmodel-の作成-25" aria-hidden="true"></a>View/ViewModel の作成</h2>
+<h3><a id="user-content-検索結果リストの実装-5" class="anchor" href="#検索結果リストの実装-5" aria-hidden="true"></a>検索結果リストの実装</h3>
+<h4><a id="user-content-usedcaradapterの解説" class="anchor" href="#usedcaradapterの解説" aria-hidden="true"></a>UsedCarAdapterの解説</h4>
+<ul>
+<li>初回のアダプター作成時はそのまま代入します</li>
+<li><code>notifyItemRangeInserted(...)</code> でアイテムが追加されたことを通知します</li>
+</ul>
+<pre><code class="language-kotlin">if (this._usedCars == null) {
+    this._usedCars = usedCars
+
+    notifyItemRangeInserted(0, usedCars.size)
+    // :
+    // :
+}
+</code></pre>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-viewviewmodel-の作成-26" class="anchor" href="#viewviewmodel-の作成-26" aria-hidden="true"></a>View/ViewModel の作成</h2>
+<h3><a id="user-content-検索結果リストの実装-6" class="anchor" href="#検索結果リストの実装-6" aria-hidden="true"></a>検索結果リストの実装</h3>
+<h4><a id="user-content-usedcaradapterの解説-1" class="anchor" href="#usedcaradapterの解説-1" aria-hidden="true"></a>UsedCarAdapterの解説</h4>
+<ul>
+<li><code>getOldListSize</code>
+<ul>
+<li>現在のリストサイズを返却させます</li>
+</ul>
+</li>
+<li><code>getNewListSize</code>
+<ul>
+<li>新しいリストサイズを返却させます</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-kotlin">val result = DiffUtil.calculateDiff(object : DiffUtil.Callback() {
+    override fun getOldListSize(): Int {
+        return requireNotNull(this@UsedCarAdapter._usedCars).size
+    }
+
+    override fun getNewListSize(): Int {
+        return usedCars.size
+    }
+    // :
+    // :
+})
+</code></pre>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-viewviewmodel-の作成-27" class="anchor" href="#viewviewmodel-の作成-27" aria-hidden="true"></a>View/ViewModel の作成</h2>
+<h3><a id="user-content-検索結果リストの実装-7" class="anchor" href="#検索結果リストの実装-7" aria-hidden="true"></a>検索結果リストの実装</h3>
+<h4><a id="user-content-usedcaradapterの解説-2" class="anchor" href="#usedcaradapterの解説-2" aria-hidden="true"></a>UsedCarAdapterの解説</h4>
+<ul>
+<li><code>areItemTheSame</code>
+<ul>
+<li>現在のリストと新しいリストの各オブジェクト(index指定有り)のポインタを比較して同一かどうかを返します</li>
+</ul>
+</li>
+<li><code>areContentsTheSame</code>
+<ul>
+<li>現在のリストと新しいリストの各オブジェクト(index指定有り)の実際のプロパティの値を比較して同一かどうかを返します</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-kotlin">val result = DiffUtil.calculateDiff(object : DiffUtil.Callback() {
+    // :
+    // :
+    override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+        val oldList = this@UsedCarAdapter._usedCars
+        return oldList?.get(oldItemPosition)?.model == usedCars[newItemPosition].model
+    }
+
+    override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+        val old = this@UsedCarAdapter._usedCars!![oldItemPosition]
+        val new = this@UsedCarAdapter._usedCars!![newItemPosition]
+        return old.model?.contentEquals(new.model)
+    }
+})
+</code></pre>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-viewviewmodel-の作成-28" class="anchor" href="#viewviewmodel-の作成-28" aria-hidden="true"></a>View/ViewModel の作成</h2>
+<h3><a id="user-content-検索結果リストの実装-8" class="anchor" href="#検索結果リストの実装-8" aria-hidden="true"></a>検索結果リストの実装</h3>
+<h4><a id="user-content-usedcaradapterの解説-3" class="anchor" href="#usedcaradapterの解説-3" aria-hidden="true"></a>UsedCarAdapterの解説</h4>
+<ul>
+<li><code>result.disaptchUpdatesTo(this)</code>
+<ul>
+<li>Adapterへリストの更新を通知します</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-kotlin">result.dispatchUpdatesTo(this)
+</code></pre>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-viewviewmodel-の作成-29" class="anchor" href="#viewviewmodel-の作成-29" aria-hidden="true"></a>View/ViewModel の作成</h2>
+<h3><a id="user-content-検索結果リストの実装-9" class="anchor" href="#検索結果リストの実装-9" aria-hidden="true"></a>検索結果リストの実装</h3>
+<h4><a id="user-content-usedcaradapterの解説-4" class="anchor" href="#usedcaradapterの解説-4" aria-hidden="true"></a>UsedCarAdapterの解説</h4>
+<ul>
+<li><code>onCreateViewHolder(...)</code>
+<ul>
+<li>RecyclerViewのライフサイクルメソッドのひとつです</li>
+<li>まずbindingを取ってきて</li>
+<li>callback関数をセットしてやる(後述する自作ClickListener)</li>
+<li>後述する <code>UsedCarViewHolder</code> のインスタンスを返すようにします</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-kotlin">override fun onCreateViewHolder(parent: ViewGroup, viewtype: Int): UsedCarViewHolder {
+    val binding =
+        DataBindingUtil.inflate(
+            LayoutInflater.from(parent.context),
+            R.layout.used_car_list_item,
+            parent,
+            false
+        ) as UsedCarListItemBinding
+
+    binding.callback = usedCarClickCallback
+
+    return UsedCarViewHolder(binding)
+}
+</code></pre>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-viewviewmodel-の作成-30" class="anchor" href="#viewviewmodel-の作成-30" aria-hidden="true"></a>View/ViewModel の作成</h2>
+<h3><a id="user-content-検索結果リストの実装-10" class="anchor" href="#検索結果リストの実装-10" aria-hidden="true"></a>検索結果リストの実装</h3>
+<h4><a id="user-content-usedcaradapterの解説-5" class="anchor" href="#usedcaradapterの解説-5" aria-hidden="true"></a>UsedCarAdapterの解説</h4>
+<ul>
+<li><code>onBindViewHolder(...)</code>
+<ul>
+<li>RecyclerViewのライフサイクルメソッドのひとつです</li>
+<li>RecyclerViewの各アイテムの描画更新を担います</li>
+<li>xml側でインスタンスの内容の描画指定を行っているので、ここでは <code>UsedCarModel</code> のインスタンスを渡すだけにします</li>
+</ul>
+</li>
+<li><code>getItemCount()</code>
+<ul>
+<li>RecyclerViewのライフサイクルメソッドのひとつです</li>
+<li>現在のリストのサイズを返してやればOK</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-kotlin">override fun onBindViewHolder(holder: UsedCarViewHolder, position: Int) {
+    holder.binding.usedCar = _usedCars?.get(position)
+    holder.binding.executePendingBindings()
+}
+
+override fun getItemCount(): Int {
+    return _usedCars?.size ?: 0
+}
+</code></pre>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-viewviewmodel-の作成-31" class="anchor" href="#viewviewmodel-の作成-31" aria-hidden="true"></a>View/ViewModel の作成</h2>
+<h3><a id="user-content-検索結果リストの実装-11" class="anchor" href="#検索結果リストの実装-11" aria-hidden="true"></a>検索結果リストの実装</h3>
+<h4><a id="user-content-usedcaradapterの解説-6" class="anchor" href="#usedcaradapterの解説-6" aria-hidden="true"></a>UsedCarAdapterの解説</h4>
+<ul>
+<li><code>open</code> アノテーションは「継承可能」を意味します</li>
+<li>このクラスでは <code>RecyclerView.ViewHolder</code> を継承していますが</li>
+<li>コンストラクタのsuperに引数の <code>binding</code> のメンバ <code>root</code> を渡しています</li>
+<li>これで <code>UsedCarAdapter</code> の準備はOK</li>
+</ul>
+<pre><code class="language-kotlin">open class UsedCarViewHolder(val binding: UsedCarListItemBinding) : RecyclerView.ViewHolder(binding.root)
+</code></pre>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-viewviewmodel-の作成-32" class="anchor" href="#viewviewmodel-の作成-32" aria-hidden="true"></a>View/ViewModel の作成</h2>
+<h3><a id="user-content-検索結果リストの実装-12" class="anchor" href="#検索結果リストの実装-12" aria-hidden="true"></a>検索結果リストの実装</h3>
+<h4><a id="user-content-viewの実装" class="anchor" href="#viewの実装" aria-hidden="true"></a>Viewの実装</h4>
+<ul>
+<li>MainFragmentに以下を実装します
+<ul>
+<li>RecyclerViewがタップされた時の挙動です</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-kotlin">private val usedCarRecyclerViewAdapter = UsedCarAdapter(object : UsedCarClickCallback {
+    override fun onClick(usedCarModel: UsedCarModel) {
+        if (lifecycle.currentState.isAtLeast(Lifecycle.State.STARTED) &amp;&amp; activity is MainActivity) {
+            AlertDialog.Builder(context)
+                       .setTitle(&quot;タップしたもの&quot;)
+                       .setMessage(usedCarModel.model)
+                       .setPositiveButton(&quot;OK&quot;){ dialog, which -&gt; }
+                       .show()
+
+        }
+    }
+})
+</code></pre>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-viewviewmodel-の作成-33" class="anchor" href="#viewviewmodel-の作成-33" aria-hidden="true"></a>View/ViewModel の作成</h2>
+<h3><a id="user-content-検索結果リストの実装-13" class="anchor" href="#検索結果リストの実装-13" aria-hidden="true"></a>検索結果リストの実装</h3>
+<h4><a id="user-content-viewの実装-1" class="anchor" href="#viewの実装-1" aria-hidden="true"></a>Viewの実装</h4>
+<ul>
+<li>MainFragmentに以下を実装します
+<ul>
+<li>既存の実装を変更します</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-kotlin">viewModel.carsLiveData.observe(viewLifecycleOwner, Observer { cars -&gt;
+    cars?.let {
+        usedCarRecyclerViewAdapter.setUsedCars(cars)
+    }
+})
+</code></pre>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-viewviewmodel-の作成-34" class="anchor" href="#viewviewmodel-の作成-34" aria-hidden="true"></a>View/ViewModel の作成</h2>
+<h3><a id="user-content-検索結果リストの実装-14" class="anchor" href="#検索結果リストの実装-14" aria-hidden="true"></a>検索結果リストの実装</h3>
+<h4><a id="user-content-viewの実装-2" class="anchor" href="#viewの実装-2" aria-hidden="true"></a>Viewの実装</h4>
+<ul>
+<li><code>ImageViewExtension</code> を実装します
+<ul>
+<li>忘れると謎のエラーで死にます</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-kotlin">package com.example.mycarsensorapp.ui.extensions
+
+import android.widget.ImageView
+import androidx.databinding.BindingAdapter
+import com.bumptech.glide.Glide
+
+class ImageViewExtension {
+    companion object {
+        @JvmStatic
+        @BindingAdapter(&quot;imageUrl&quot;)
+        fun ImageView.loadImage(imageUrl: String?) {
+            if (imageUrl == null) {
+                return
+            }
+            Glide.with(this).load(imageUrl).into(this)
+        }
+    }
+}
+</code></pre>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-viewviewmodel-の作成-35" class="anchor" href="#viewviewmodel-の作成-35" aria-hidden="true"></a>View/ViewModel の作成</h2>
+<h3><a id="user-content-検索結果リストの実装-15" class="anchor" href="#検索結果リストの実装-15" aria-hidden="true"></a>検索結果リストの実装</h3>
+<ul>
+<li>いざ実行！</li>
+</ul>
+<p><img src="./img/3-4.png" alt="いざ実行"></p>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-viewviewmodel-の作成-36" class="anchor" href="#viewviewmodel-の作成-36" aria-hidden="true"></a>View/ViewModel の作成</h2>
+<h3><a id="user-content-検索結果リストの実装-16" class="anchor" href="#検索結果リストの実装-16" aria-hidden="true"></a>検索結果リストの実装</h3>
+<ul>
+<li>画像が表示してくれない
+<ul>
+<li>カーセンサーAPIが返す画像のURLがHTTPであるため
+<ul>
+<li>ClearText対応が必要</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-viewviewmodel-の作成-37" class="anchor" href="#viewviewmodel-の作成-37" aria-hidden="true"></a>View/ViewModel の作成</h2>
+<h3><a id="user-content-検索結果リストの実装-17" class="anchor" href="#検索結果リストの実装-17" aria-hidden="true"></a>検索結果リストの実装</h3>
+<h4><a id="user-content-androidmanifestの修正" class="anchor" href="#androidmanifestの修正" aria-hidden="true"></a>AndroidManifestの修正</h4>
+<pre><code class="language-xml">    &lt;application
+        android:allowBackup=&quot;true&quot;
+        android:icon=&quot;@mipmap/ic_launcher&quot;
+        android:label=&quot;@string/app_name&quot;
+        android:roundIcon=&quot;@mipmap/ic_launcher_round&quot;
+        android:supportsRtl=&quot;true&quot;
+        android:usesCleartextTraffic=&quot;true&quot;
+        android:theme=&quot;@style/AppTheme&quot;&gt;
+
+</code></pre>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-viewviewmodel-の作成-38" class="anchor" href="#viewviewmodel-の作成-38" aria-hidden="true"></a>View/ViewModel の作成</h2>
+<h3><a id="user-content-検索結果リストの実装-18" class="anchor" href="#検索結果リストの実装-18" aria-hidden="true"></a>検索結果リストの実装</h3>
+<ul>
+<li>いざ実行！</li>
+</ul>
+<p><img src="./img/3-5.png" alt="いざ実行"></p>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-viewviewmodel-の作成-39" class="anchor" href="#viewviewmodel-の作成-39" aria-hidden="true"></a>View/ViewModel の作成</h2>
+<h3><a id="user-content-検索結果リストの実装-19" class="anchor" href="#検索結果リストの実装-19" aria-hidden="true"></a>検索結果リストの実装</h3>
+<ul>
+<li>いざ実行！
+<ul>
+<li>リストもタップしてみましょう！</li>
+</ul>
+</li>
+</ul>
+<p><img src="./img/3-6.png" alt="いざ実行"></p>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-viewviewmodel-の作成-40" class="anchor" href="#viewviewmodel-の作成-40" aria-hidden="true"></a>View/ViewModel の作成</h2>
+<h3><a id="user-content-完成！" class="anchor" href="#完成！" aria-hidden="true"></a>完成！</h3>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-viewviewmodel-の作成-41" class="anchor" href="#viewviewmodel-の作成-41" aria-hidden="true"></a>View/ViewModel の作成</h2>
+<h3><a id="user-content-完成だが、後もう少しつづくんじゃ。。。" class="anchor" href="#完成だが、後もう少しつづくんじゃ。。。" aria-hidden="true"></a>完成…だが、後もう少しつづくんじゃ。。。</h3>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
             <h2><a id="user-content-2つめのビュー--usedcardetailfragment--usedcardetailviewmodel--の作成" class="anchor" href="#2つめのビュー--usedcardetailfragment--usedcardetailviewmodel--の作成" aria-hidden="true"></a>2つめのビュー (<code>UsedCarDetailFragment</code> / <code>UsedCarDetailViewModel</code>) の作成</h2>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-2つめのビューの作成" class="anchor" href="#2つめのビューの作成" aria-hidden="true"></a>2つめのビューの作成</h2>
+<ul>
+<li>次の順序で作成していきます
+<ul>
+<li>View(xml)の作成</li>
+<li>ViewModelの作成</li>
+<li>View(Fragment)の作成</li>
+<li>Activityの修正</li>
+</ul>
+</li>
+</ul>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-2つめのビューの作成-1" class="anchor" href="#2つめのビューの作成-1" aria-hidden="true"></a>2つめのビューの作成</h2>
+<ul>
+<li>まずView(xml+Fragment)/ViewModelを作成します</li>
+</ul>
+<p><img src="./img/4-0.png" alt="View/ViewModel作成"></p>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-2つめのビューの作成-2" class="anchor" href="#2つめのビューの作成-2" aria-hidden="true"></a>2つめのビューの作成</h2>
+<ul>
+<li>まずView(xml+Fragment)/ViewModelを作成します</li>
+</ul>
+<p><img src="./img/4-1.png" alt="View/ViewModel作成"></p>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-2つめのビューの作成-3" class="anchor" href="#2つめのビューの作成-3" aria-hidden="true"></a>2つめのビューの作成</h2>
+<ul>
+<li>まずView(xml+Fragment)/ViewModelを作成します
+<ul>
+<li>こうなってればOKです</li>
+</ul>
+</li>
+</ul>
+<p><img src="./img/4-2.png" alt="View/ViewModel作成"></p>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-2つめのビューの作成-4" class="anchor" href="#2つめのビューの作成-4" aria-hidden="true"></a>2つめのビューの作成</h2>
+<h3><a id="user-content-viewの作成-4" class="anchor" href="#viewの作成-4" aria-hidden="true"></a>Viewの作成</h3>
+<ul>
+<li>これも配布します。。。</li>
+</ul>
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;layout
+    xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    xmlns:app=&quot;http://schemas.android.com/apk/res-auto&quot;
+    xmlns:tools=&quot;http://schemas.android.com/tools&quot;
+    &gt;
+
+    &lt;data&gt;
+        &lt;variable name=&quot;vm&quot; type=&quot;com.example.carsensorapp.ui.usedcardetail.UsedCarDetailViewModel&quot; /&gt;
+    &lt;/data&gt;
+
+    &lt;LinearLayout
+        android:layout_width=&quot;match_parent&quot;
+        android:layout_height=&quot;match_parent&quot;
+        tools:context=&quot;.ui.usedcardetail.UsedCarDetailFragment&quot;
+        android:orientation=&quot;vertical&quot;
+        &gt;
+        &lt;LinearLayout
+            android:layout_width=&quot;match_parent&quot;
+            android:layout_height=&quot;wrap_content&quot;
+            &gt;
+            &lt;ImageView
+                android:layout_width=&quot;match_parent&quot;
+                android:layout_height=&quot;wrap_content&quot;
+                app:imageUrl=&quot;@{vm.usedCar.photoLargeUrl}&quot;
+                /&gt;
+        &lt;/LinearLayout&gt;
+        &lt;TableLayout
+            android:layout_width=&quot;match_parent&quot;
+            android:layout_height=&quot;wrap_content&quot;
+            android:layout_margin=&quot;5dp&quot;
+            &gt;
+            &lt;TableRow
+                android:weightSum=&quot;2&quot;
+                android:background=&quot;@drawable/border_table&quot;
+                &gt;
+                &lt;TextView
+                    android:layout_weight=&quot;0.2&quot;
+                    android:text=&quot;@string/brand&quot;
+                    /&gt;
+                &lt;TextView
+                    android:layout_weight=&quot;1.8&quot;
+                    android:text=&quot;@{vm.usedCar.brandName}&quot;
+                    /&gt;
+            &lt;/TableRow&gt;
+            &lt;TableRow
+                android:weightSum=&quot;2&quot;
+                android:background=&quot;@drawable/border_table&quot;
+                &gt;
+                &lt;TextView
+                    android:layout_weight=&quot;0.2&quot;
+                    android:text=&quot;@string/model&quot;
+                    /&gt;
+                &lt;TextView
+                    android:layout_weight=&quot;1.8&quot;
+                    android:text=&quot;@{vm.usedCar.model}&quot;
+                    /&gt;
+            &lt;/TableRow&gt;
+            &lt;TableRow
+                android:weightSum=&quot;2&quot;
+                android:background=&quot;@drawable/border_table&quot;
+                &gt;
+                &lt;TextView
+                    android:layout_weight=&quot;0.2&quot;
+                    android:text=&quot;@string/grade&quot;
+                    /&gt;
+                &lt;TextView
+                    android:layout_weight=&quot;1.8&quot;
+                    android:text=&quot;@{vm.usedCar.grade}&quot;
+                    /&gt;
+            &lt;/TableRow&gt;
+            &lt;TableRow
+                android:weightSum=&quot;2&quot;
+                android:background=&quot;@drawable/border_table&quot;
+                &gt;
+                &lt;TextView
+                    android:layout_weight=&quot;0.2&quot;
+                    android:text=&quot;@string/price&quot;
+                    /&gt;
+                &lt;LinearLayout
+                    android:layout_width=&quot;match_parent&quot;
+                    android:layout_height=&quot;wrap_content&quot;
+                    android:layout_weight=&quot;1.8&quot;
+                    &gt;
+                    &lt;TextView
+                        android:layout_width=&quot;wrap_content&quot;
+                        android:layout_height=&quot;wrap_content&quot;
+                        android:text=&quot;@{vm.usedCar.price}&quot;
+                        /&gt;
+                    &lt;TextView
+                        android:layout_width=&quot;wrap_content&quot;
+                        android:layout_height=&quot;wrap_content&quot;
+                        android:text=&quot;@string/yen&quot;
+                        /&gt;
+                &lt;/LinearLayout&gt;
+            &lt;/TableRow&gt;
+            &lt;TableRow
+                android:weightSum=&quot;2&quot;
+                android:background=&quot;@drawable/border_table&quot;
+                &gt;
+                &lt;TextView
+                    android:layout_weight=&quot;0.2&quot;
+                    android:text=&quot;@string/car_width&quot;
+                    /&gt;
+                &lt;TextView
+                    android:layout_weight=&quot;1.8&quot;
+                    android:text=&quot;@{vm.usedCar.width.toString()}&quot;
+                    /&gt;
+            &lt;/TableRow&gt;
+            &lt;TableRow
+                android:weightSum=&quot;2&quot;
+                android:background=&quot;@drawable/border_table&quot;
+                &gt;
+                &lt;TextView
+                    android:layout_weight=&quot;0.2&quot;
+                    android:text=&quot;@string/car_height&quot;
+                    /&gt;
+                &lt;TextView
+                    android:layout_weight=&quot;1.8&quot;
+                    android:text=&quot;@{vm.usedCar.height.toString()}&quot;
+                    /&gt;
+            &lt;/TableRow&gt;
+            &lt;TableRow
+                android:weightSum=&quot;2&quot;
+                android:background=&quot;@drawable/border_table&quot;
+                &gt;
+                &lt;TextView
+                    android:layout_weight=&quot;0.2&quot;
+                    android:text=&quot;@string/car_length&quot;
+                    /&gt;
+                &lt;TextView
+                    android:layout_weight=&quot;1.8&quot;
+                    android:text=&quot;@{vm.usedCar.length.toString()}&quot;
+                    /&gt;
+            &lt;/TableRow&gt;
+            &lt;TableRow
+                android:weightSum=&quot;2&quot;
+                android:background=&quot;@drawable/border_table&quot;
+                &gt;
+                &lt;TextView
+                    android:layout_weight=&quot;0.2&quot;
+                    android:text=&quot;@string/period&quot;
+                    /&gt;
+                &lt;TextView
+                    android:layout_weight=&quot;1.8&quot;
+                    android:text=&quot;@{vm.usedCar.period}&quot;
+                    /&gt;
+            &lt;/TableRow&gt;
+            &lt;TableRow
+                android:weightSum=&quot;2&quot;
+                android:background=&quot;@drawable/border_table&quot;
+                &gt;
+                &lt;TextView
+                    android:layout_weight=&quot;0.2&quot;
+                    android:text=&quot;@string/series&quot;
+                    /&gt;
+                &lt;TextView
+                    android:layout_weight=&quot;1.8&quot;
+                    android:text=&quot;@{vm.usedCar.series}&quot;
+                    /&gt;
+            &lt;/TableRow&gt;
+            &lt;TableRow
+                android:weightSum=&quot;2&quot;
+                android:background=&quot;@drawable/border_table&quot;
+                &gt;
+                &lt;TextView
+                    android:layout_weight=&quot;0.2&quot;
+                    android:text=&quot;@string/body_type&quot;
+                    /&gt;
+                &lt;TextView
+                    android:layout_weight=&quot;1.8&quot;
+                    android:text=&quot;@{vm.usedCar.bodyName}&quot;
+                    /&gt;
+            &lt;/TableRow&gt;
+            &lt;TableRow
+                android:weightSum=&quot;2&quot;
+                android:background=&quot;@drawable/border_table&quot;
+                &gt;
+                &lt;TextView
+                    android:layout_weight=&quot;0.2&quot;
+                    android:text=&quot;@string/url&quot;
+                    /&gt;
+                &lt;TextView
+                    android:layout_weight=&quot;1.8&quot;
+                    android:autoLink=&quot;web&quot;
+                    android:text=&quot;@{vm.usedCar.mobileUrl}&quot;
+                    /&gt;
+            &lt;/TableRow&gt;
+        &lt;/TableLayout&gt;
+    &lt;/LinearLayout&gt;
+&lt;/layout&gt;
+</code></pre>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-2つめのビューの作成-5" class="anchor" href="#2つめのビューの作成-5" aria-hidden="true"></a>2つめのビューの作成</h2>
+<h3><a id="user-content-viewmodelの作成-6" class="anchor" href="#viewmodelの作成-6" aria-hidden="true"></a>ViewModelの作成</h3>
+<pre><code class="language-kotlin">class UsedCarDetailViewModel(
+    private val myApplication: Application,
+    private val usedCarDetailModel: UsedCarDetailModel
+) : AndroidViewModel(myApplication) {
+
+    val usedCarLiveData: MutableLiveData&lt;UsedCarDetailModel&gt; = MutableLiveData()
+
+    var usedCar = ObservableField&lt;UsedCarDetailModel&gt;()
+
+    init {
+        viewModelScope.launch {
+            usedCarLiveData.postValue(usedCarDetailModel)
+        }
+    }
+
+    fun setUsedCarDetailModel(model: UsedCarDetailModel)
+    {
+        usedCar.set(model);
+    }
+
+    // class Factory
+}
+</code></pre>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-2つめのビューの作成-6" class="anchor" href="#2つめのビューの作成-6" aria-hidden="true"></a>2つめのビューの作成</h2>
+<h3><a id="user-content-viewmodelの作成-7" class="anchor" href="#viewmodelの作成-7" aria-hidden="true"></a>ViewModelの作成</h3>
+<pre><code class="language-kotlin">class UsedCarDetailViewModel(
+    private val myApplication: Application,
+    private val usedCarDetailModel: UsedCarDetailModel
+) : AndroidViewModel(myApplication) {
+    // :
+    // :
+    class Factory(
+        private val application: Application,
+        private val usedCarDetailModel: UsedCarDetailModel
+    ) : ViewModelProvider.NewInstanceFactory() {
+        @Suppress(&quot;UNCHECKD_CAST&quot;)
+        override fun &lt;T : ViewModel?&gt; create(modelClass: Class&lt;T&gt;): T {
+            return UsedCarDetailViewModel(application, usedCarDetailModel) as T
+        }
+    }
+}
+</code></pre>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-2つめのビューの作成-7" class="anchor" href="#2つめのビューの作成-7" aria-hidden="true"></a>2つめのビューの作成</h2>
+<h3><a id="user-content-viewfragmentの作成" class="anchor" href="#viewfragmentの作成" aria-hidden="true"></a>View(Fragment)の作成</h3>
+<ul>
+<li>ActivityからコールされてFragmentを作成するロジック
+<ul>
+<li><code>arguments</code> で呼び出し元から引数を受け取っている
+<ul>
+<li><code>arguments</code> はまた後で登場します</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-kotlin">companion object {
+    const val KEY = &quot;UsedCarDetailModel&quot;
+    fun forUsedCar(model: UsedCarDetailModel) = UsedCarDetailFragment().apply {
+        arguments = Bundle().apply {
+            putParcelable(KEY, model)
+        }
+    }
+}
+</code></pre>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-2つめのビューの作成-8" class="anchor" href="#2つめのビューの作成-8" aria-hidden="true"></a>2つめのビューの作成</h2>
+<h3><a id="user-content-viewfragmentの作成-1" class="anchor" href="#viewfragmentの作成-1" aria-hidden="true"></a>View(Fragment)の作成</h3>
+<ul>
+<li>ViewModelなどの初期化ロジック
+<ul>
+<li>View内に先ほど渡されたモデルを持っておきます</li>
+<li>ViewModelの作成の仕方を定義してあるので、それを使用します</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-kotlin">private val usedCarDetailModel by lazy {
+    requireNotNull(
+        arguments?.getParcelable&lt;UsedCarDetailModel&gt;(KEY)
+    )
+}
+
+private val viewModel: UsedCarDetailViewModel by lazy {
+    ViewModelProvider(
+        this,
+        UsedCarDetailViewModel.Factory(
+            requireActivity().application,
+            usedCarDetailModel
+        )
+    ).get(UsedCarDetailViewModel::class.java)
+}
+</code></pre>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-2つめのビューの作成-9" class="anchor" href="#2つめのビューの作成-9" aria-hidden="true"></a>2つめのビューの作成</h2>
+<h3><a id="user-content-viewfragmentの作成-2" class="anchor" href="#viewfragmentの作成-2" aria-hidden="true"></a>View(Fragment)の作成</h3>
+<ul>
+<li>Fragmentの初期化ロジック
+<ul>
+<li>bindingの情報を保持しておき</li>
+<li>onCreateViewでは <code>binding.root</code> を、 <code>MainFragment</code> 同様に返します</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-kotlin">private lateinit var binding: UsedCarDetailFragmentBinding
+
+override fun onCreateView(
+    inflater: LayoutInflater,
+    container: ViewGroup?,
+    savedInstanceState: Bundle?
+): View? {
+    binding = DataBindingUtil.inflate(inflater, R.layout.used_car_detail_fragment, container, false)
+    return binding.root
+}
+</code></pre>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-2つめのビューの作成-10" class="anchor" href="#2つめのビューの作成-10" aria-hidden="true"></a>2つめのビューの作成</h2>
+<h3><a id="user-content-viewfragmentの作成-3" class="anchor" href="#viewfragmentの作成-3" aria-hidden="true"></a>View(Fragment)の作成</h3>
+<ul>
+<li>Fragmentの初期化ロジック(その2)
+<ul>
+<li><code>binding.apply { ... }</code> でbindingのvmをセットしてあげます</li>
+<li><code>MainFragment</code> 同様に <code>LiveData</code> の更新を Observe し、更新があればその内容を ViewModel に再度渡してあげるようにします</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-kotlin">override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    super.onViewCreated(view, savedInstanceState)
+
+    binding.apply {
+        vm = viewModel
+    }
+
+    viewModel.usedCarLiveData.observe(viewLifecycleOwner, Observer { usedCar -&gt;
+        usedCar.let {
+            viewModel.setUsedCarDetailModel(it)
+        }
+    })
+}
+</code></pre>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-2つめのビューの作成-11" class="anchor" href="#2つめのビューの作成-11" aria-hidden="true"></a>2つめのビューの作成</h2>
+<h3><a id="user-content-activityの修正" class="anchor" href="#activityの修正" aria-hidden="true"></a>Activityの修正</h3>
+<ul>
+<li><code>MainActivity</code> に以下を追加してあげます</li>
+</ul>
+<pre><code class="language-kotlin">fun show(usedCar: UsedCarModel) {
+    //詳細のFragment
+    val usedCarDetailModel = com.example.mycarsensorapp.models.UsedCarDetailModel(
+        usedCar.brand.name, usedCar.model,
+        usedCar.grade, usedCar.price,
+        usedCar.width, usedCar.height,
+        usedCar.length, usedCar.period,
+        usedCar.person, usedCar.series,
+        usedCar.desc, usedCar.body.name,
+        usedCar.photo.main.l, usedCar.urls.mobile
+    )
+    val usedCarDetailFragment = UsedCarDetailFragment.forUsedCar(usedCarDetailModel)
+    supportFragmentManager
+        .beginTransaction()
+        .addToBackStack(&quot;project&quot;)
+        .replace(R.id.container, usedCarDetailFragment, null)
+        .commit()
+}
+</code></pre>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-2つめのビューの作成-12" class="anchor" href="#2つめのビューの作成-12" aria-hidden="true"></a>2つめのビューの作成</h2>
+<h3><a id="user-content-activityの修正-1" class="anchor" href="#activityの修正-1" aria-hidden="true"></a>Activityの修正</h3>
+<ul>
+<li>最後に、 <code>MainFragment</code> の <code>UsedCarAdapter</code> に指定しているクリックイベントの内容を変更してやればOKです</li>
+</ul>
+<pre><code class="language-kotlin">  private val usedCarRecyclerViewAdapter = UsedCarAdapter(object : UsedCarClickCallback {
+      override fun onClick(usedCarModel: UsedCarModel) {
+          if (lifecycle.currentState.isAtLeast(Lifecycle.State.STARTED) &amp;&amp; activity is MainActivity) {
+              (activity as MainActivity).show(usedCarModel)
+          }
+      }
+  })
+</code></pre>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-2つめのビューの作成-13" class="anchor" href="#2つめのビューの作成-13" aria-hidden="true"></a>2つめのビューの作成</h2>
+<ul>
+<li>リストをタップしてこんな画面が出れば完成です！</li>
+</ul>
+<p><img src="./img/4-3.png" alt="完成"></p>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-完成！-1" class="anchor" href="#完成！-1" aria-hidden="true"></a>完成！</h2>
+<ul>
+<li>お疲れ様でした！</li>
+<li>やったぜ！</li>
+</ul>
 
             </section>
     
