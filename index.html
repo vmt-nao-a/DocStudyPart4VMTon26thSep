@@ -16,7 +16,7 @@
   <link rel="stylesheet" href="libs/reveal.js/font-awesome-4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="libs/reveal.js/3.8.0/css/reveal.css">
   
-  <link rel="stylesheet" href="libs/reveal.js/3.8.0/css/theme/white.css" id="theme">
+  <link rel="stylesheet" href="libs/reveal.js/3.8.0/css/theme/black.css" id="theme">
   
   
   <link rel="stylesheet" href="libs/reveal.js/3.8.0/plugin/title-footer/title-footer-mod.css" />
@@ -99,6 +99,8 @@
   <link rel="stylesheet" href="libs/highlight.js/9.12.0/Zenburn.css">
   
 
+  
+  <link rel="stylesheet" href="my-theme.css">
   
   
   <!-- Printing and PDF exports -->
@@ -276,7 +278,9 @@
         <section >
             
             <h1><a id="user-content-" class="anchor" href="#" aria-hidden="true"></a><img src="./img/title.jpg" alt="いきなりコトリン_and_MVVM_and_DataBinding"></h1>
-<h4><a id="user-content-vmt開発部-赤倉-奈緒" class="anchor" href="#vmt開発部-赤倉-奈緒" aria-hidden="true"></a>VMT開発部　赤倉 奈緒</h4>
+<h4><a id="user-content-20200926-sat" class="anchor" href="#20200926-sat" aria-hidden="true"></a>2020/09/26 (SAT)</h4>
+<h4><a id="user-content-vmt-develop-depratment" class="anchor" href="#vmt-develop-depratment" aria-hidden="true"></a>VMT Develop-Depratment</h4>
+<h4><a id="user-content-nao-akakura" class="anchor" href="#nao-akakura" aria-hidden="true"></a>Nao Akakura</h4>
 
             </section>
     
@@ -307,11 +311,11 @@
     
         <section >
             
-            <h2><a id="user-content-この勉強会でやってほしいこと" class="anchor" href="#この勉強会でやってほしいこと" aria-hidden="true"></a>この勉強会でやってほしいこと</h2>
+            <h2><a id="user-content-この勉強会のゴール" class="anchor" href="#この勉強会のゴール" aria-hidden="true"></a>この勉強会のゴール</h2>
 <ul>
-<li>Kotlinちょっとでも覚える</li>
-<li><code>MVVM</code> アーキテクチャに触れる</li>
-<li>ついでにAndroidの <code>DataBinding</code> と <code>ViewBinding</code> にも触れてみる</li>
+<li>Kotlin <strong>ちょっとでも</strong> 覚える</li>
+<li><code>MVVM</code> アーキテクチャを少しでも理解する</li>
+<li><code>DataBinding</code> / <code>ViewBinding</code> の便利さを体感する</li>
 </ul>
 
             </section>
@@ -376,12 +380,12 @@
         <section >
             
             <h2><a id="user-content-用意するもの-1" class="anchor" href="#用意するもの-1" aria-hidden="true"></a>用意するもの</h2>
-<h3><a id="user-content-androidstudioが動くpc" class="anchor" href="#androidstudioが動くpc" aria-hidden="true"></a>AndroidStudioが動くPC</h3>
+<h3><a id="user-content-androidstudio-が動くpc" class="anchor" href="#androidstudio-が動くpc" aria-hidden="true"></a><code>AndroidStudio</code>が動くPC</h3>
 <ul>
 <li>macOSでも</li>
 <li>Windowsでも</li>
 <li>お好きなLinuxでも</li>
-<li>AndroidStudioが動けばなんでもいいです</li>
+<li><code>AndroidStudio</code>が動けばなんでもいいです</li>
 <li><code>AVD Manager</code> も動ける環境が好ましいです(OR 実機でデバッグだ)</li>
 </ul>
 
@@ -394,7 +398,7 @@
         <section >
             
             <h2><a id="user-content-用意するもの-2" class="anchor" href="#用意するもの-2" aria-hidden="true"></a>用意するもの</h2>
-<h3><a id="user-content-androidstudio" class="anchor" href="#androidstudio" aria-hidden="true"></a>AndroidStudio</h3>
+<h3><a id="user-content-androidstudio" class="anchor" href="#androidstudio" aria-hidden="true"></a><code>AndroidStudio</code></h3>
 <ul>
 <li><code>AVD Manager</code> でデバッグ用のエミュレートマシンも用意しておくとGOODですね！</li>
 </ul>
@@ -1108,6 +1112,20 @@ kapt &quot;com.android.databinding:compiler:3.1.4&quot;
 <ul>
 <li>定数クラスを作成する</li>
 </ul>
+<p><img src="./img/2-1a.png" alt="定数クラス作成"></p>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-api通信インターフェース--repository--の作成-6" class="anchor" href="#api通信インターフェース--repository--の作成-6" aria-hidden="true"></a>API通信インターフェース (<code>Repository</code>) の作成</h2>
+<ul>
+<li>定数クラスを作成する</li>
+</ul>
 <p><img src="./img/2-1a.png" alt="定数クラス作成">
 <img src="./img/2-1b.png" alt="定数クラス作成"></p>
 
@@ -1119,7 +1137,7 @@ kapt &quot;com.android.databinding:compiler:3.1.4&quot;
     
         <section >
             
-            <h2><a id="user-content-api通信インターフェース--repository--の作成-6" class="anchor" href="#api通信インターフェース--repository--の作成-6" aria-hidden="true"></a>API通信インターフェース (<code>Repository</code>) の作成</h2>
+            <h2><a id="user-content-api通信インターフェース--repository--の作成-7" class="anchor" href="#api通信インターフェース--repository--の作成-7" aria-hidden="true"></a>API通信インターフェース (<code>Repository</code>) の作成</h2>
 <ul>
 <li>定数クラスを作成する
 <ul>
@@ -1164,7 +1182,7 @@ class Constant {
     
         <section >
             
-            <h2><a id="user-content-api通信インターフェース--repository--の作成-7" class="anchor" href="#api通信インターフェース--repository--の作成-7" aria-hidden="true"></a>API通信インターフェース (<code>Repository</code>) の作成</h2>
+            <h2><a id="user-content-api通信インターフェース--repository--の作成-8" class="anchor" href="#api通信インターフェース--repository--の作成-8" aria-hidden="true"></a>API通信インターフェース (<code>Repository</code>) の作成</h2>
 <ul>
 <li>通信用インターフェースを作る</li>
 </ul>
@@ -1178,7 +1196,7 @@ class Constant {
     
         <section >
             
-            <h2><a id="user-content-api通信インターフェース--repository--の作成-8" class="anchor" href="#api通信インターフェース--repository--の作成-8" aria-hidden="true"></a>API通信インターフェース (<code>Repository</code>) の作成</h2>
+            <h2><a id="user-content-api通信インターフェース--repository--の作成-9" class="anchor" href="#api通信インターフェース--repository--の作成-9" aria-hidden="true"></a>API通信インターフェース (<code>Repository</code>) の作成</h2>
 <ul>
 <li>通信用インターフェースを作る</li>
 </ul>
@@ -1192,7 +1210,7 @@ class Constant {
     
         <section >
             
-            <h2><a id="user-content-api通信インターフェース--repository--の作成-9" class="anchor" href="#api通信インターフェース--repository--の作成-9" aria-hidden="true"></a>API通信インターフェース (<code>Repository</code>) の作成</h2>
+            <h2><a id="user-content-api通信インターフェース--repository--の作成-10" class="anchor" href="#api通信インターフェース--repository--の作成-10" aria-hidden="true"></a>API通信インターフェース (<code>Repository</code>) の作成</h2>
 <ul>
 <li>通信用インターフェースを作る
 <ul>
@@ -1220,7 +1238,7 @@ class Constant {
     
         <section >
             
-            <h2><a id="user-content-api通信インターフェース--repository--の作成-10" class="anchor" href="#api通信インターフェース--repository--の作成-10" aria-hidden="true"></a>API通信インターフェース (<code>Repository</code>) の作成</h2>
+            <h2><a id="user-content-api通信インターフェース--repository--の作成-11" class="anchor" href="#api通信インターフェース--repository--の作成-11" aria-hidden="true"></a>API通信インターフェース (<code>Repository</code>) の作成</h2>
 <ul>
 <li>通信用リポジトリクラスを作る</li>
 </ul>
@@ -1235,7 +1253,7 @@ class Constant {
     
         <section >
             
-            <h2><a id="user-content-api通信インターフェース--repository--の作成-11" class="anchor" href="#api通信インターフェース--repository--の作成-11" aria-hidden="true"></a>API通信インターフェース (<code>Repository</code>) の作成</h2>
+            <h2><a id="user-content-api通信インターフェース--repository--の作成-12" class="anchor" href="#api通信インターフェース--repository--の作成-12" aria-hidden="true"></a>API通信インターフェース (<code>Repository</code>) の作成</h2>
 <ul>
 <li>通信用リポジトリクラスを作る</li>
 </ul>
@@ -1303,7 +1321,7 @@ class Constant {
     
         <section >
             
-            <h2><a id="user-content-api通信インターフェース--repository--の作成-12" class="anchor" href="#api通信インターフェース--repository--の作成-12" aria-hidden="true"></a>API通信インターフェース (<code>Repository</code>) の作成</h2>
+            <h2><a id="user-content-api通信インターフェース--repository--の作成-13" class="anchor" href="#api通信インターフェース--repository--の作成-13" aria-hidden="true"></a>API通信インターフェース (<code>Repository</code>) の作成</h2>
 <ul>
 <li>作ったインターフェースを試してみたい。。。！
 <ul>
@@ -1866,13 +1884,11 @@ override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
 <ul>
 <li>xmlの中身はこのように定義しておきます
 <ul>
-<li>onClickのコールバック呼び出しや</li>
-<li><code>app:imageUrl</code> のようなところで直接モデルの中身を参照させているのがポイント</li>
+<li>モデルの中身やコールバックを直接指定しているところがポイント</li>
 </ul>
 </li>
 </ul>
 <pre><code class="language-xml">    &lt;!-- : --&gt;
-    &lt;!-- : --&gt;
         &lt;androidx.cardview.widget.CardView
         android:layout_width=&quot;match_parent&quot;
         android:layout_height=&quot;100dp&quot;
@@ -1892,7 +1908,6 @@ override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                 android:layout_margin=&quot;5dp&quot;
                 app:imageUrl=&quot;@{usedCar.photo.main.l}&quot;
                 /&gt;
-    &lt;!-- : --&gt;
     &lt;!-- : --&gt;
 &lt;/layout&gt;
 </code></pre>
@@ -2092,6 +2107,18 @@ interface UsedCarClickCallback {
 </ul>
 </li>
 </ul>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-viewviewmodel-の作成-28" class="anchor" href="#viewviewmodel-の作成-28" aria-hidden="true"></a>View/ViewModel の作成</h2>
+<h3><a id="user-content-検索結果リストの実装-8" class="anchor" href="#検索結果リストの実装-8" aria-hidden="true"></a>検索結果リストの実装</h3>
+<h4><a id="user-content-usedcaradapterの解説-3" class="anchor" href="#usedcaradapterの解説-3" aria-hidden="true"></a>UsedCarAdapterの解説</h4>
 <pre><code class="language-kotlin">val result = DiffUtil.calculateDiff(object : DiffUtil.Callback() {
     // :
     // :
@@ -2116,9 +2143,9 @@ interface UsedCarClickCallback {
     
         <section >
             
-            <h2><a id="user-content-viewviewmodel-の作成-28" class="anchor" href="#viewviewmodel-の作成-28" aria-hidden="true"></a>View/ViewModel の作成</h2>
-<h3><a id="user-content-検索結果リストの実装-8" class="anchor" href="#検索結果リストの実装-8" aria-hidden="true"></a>検索結果リストの実装</h3>
-<h4><a id="user-content-usedcaradapterの解説-3" class="anchor" href="#usedcaradapterの解説-3" aria-hidden="true"></a>UsedCarAdapterの解説</h4>
+            <h2><a id="user-content-viewviewmodel-の作成-29" class="anchor" href="#viewviewmodel-の作成-29" aria-hidden="true"></a>View/ViewModel の作成</h2>
+<h3><a id="user-content-検索結果リストの実装-9" class="anchor" href="#検索結果リストの実装-9" aria-hidden="true"></a>検索結果リストの実装</h3>
+<h4><a id="user-content-usedcaradapterの解説-4" class="anchor" href="#usedcaradapterの解説-4" aria-hidden="true"></a>UsedCarAdapterの解説</h4>
 <ul>
 <li><code>result.disaptchUpdatesTo(this)</code>
 <ul>
@@ -2137,9 +2164,9 @@ interface UsedCarClickCallback {
     
         <section >
             
-            <h2><a id="user-content-viewviewmodel-の作成-29" class="anchor" href="#viewviewmodel-の作成-29" aria-hidden="true"></a>View/ViewModel の作成</h2>
-<h3><a id="user-content-検索結果リストの実装-9" class="anchor" href="#検索結果リストの実装-9" aria-hidden="true"></a>検索結果リストの実装</h3>
-<h4><a id="user-content-usedcaradapterの解説-4" class="anchor" href="#usedcaradapterの解説-4" aria-hidden="true"></a>UsedCarAdapterの解説</h4>
+            <h2><a id="user-content-viewviewmodel-の作成-30" class="anchor" href="#viewviewmodel-の作成-30" aria-hidden="true"></a>View/ViewModel の作成</h2>
+<h3><a id="user-content-検索結果リストの実装-10" class="anchor" href="#検索結果リストの実装-10" aria-hidden="true"></a>検索結果リストの実装</h3>
+<h4><a id="user-content-usedcaradapterの解説-5" class="anchor" href="#usedcaradapterの解説-5" aria-hidden="true"></a>UsedCarAdapterの解説</h4>
 <ul>
 <li><code>onCreateViewHolder(...)</code>
 <ul>
@@ -2150,6 +2177,18 @@ interface UsedCarClickCallback {
 </ul>
 </li>
 </ul>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-viewviewmodel-の作成-31" class="anchor" href="#viewviewmodel-の作成-31" aria-hidden="true"></a>View/ViewModel の作成</h2>
+<h3><a id="user-content-検索結果リストの実装-11" class="anchor" href="#検索結果リストの実装-11" aria-hidden="true"></a>検索結果リストの実装</h3>
+<h4><a id="user-content-usedcaradapterの解説-6" class="anchor" href="#usedcaradapterの解説-6" aria-hidden="true"></a>UsedCarAdapterの解説</h4>
 <pre><code class="language-kotlin">override fun onCreateViewHolder(parent: ViewGroup, viewtype: Int): UsedCarViewHolder {
     val binding =
         DataBindingUtil.inflate(
@@ -2173,9 +2212,9 @@ interface UsedCarClickCallback {
     
         <section >
             
-            <h2><a id="user-content-viewviewmodel-の作成-30" class="anchor" href="#viewviewmodel-の作成-30" aria-hidden="true"></a>View/ViewModel の作成</h2>
-<h3><a id="user-content-検索結果リストの実装-10" class="anchor" href="#検索結果リストの実装-10" aria-hidden="true"></a>検索結果リストの実装</h3>
-<h4><a id="user-content-usedcaradapterの解説-5" class="anchor" href="#usedcaradapterの解説-5" aria-hidden="true"></a>UsedCarAdapterの解説</h4>
+            <h2><a id="user-content-viewviewmodel-の作成-32" class="anchor" href="#viewviewmodel-の作成-32" aria-hidden="true"></a>View/ViewModel の作成</h2>
+<h3><a id="user-content-検索結果リストの実装-12" class="anchor" href="#検索結果リストの実装-12" aria-hidden="true"></a>検索結果リストの実装</h3>
+<h4><a id="user-content-usedcaradapterの解説-7" class="anchor" href="#usedcaradapterの解説-7" aria-hidden="true"></a>UsedCarAdapterの解説</h4>
 <ul>
 <li><code>onBindViewHolder(...)</code>
 <ul>
@@ -2184,6 +2223,25 @@ interface UsedCarClickCallback {
 <li>xml側でインスタンスの内容の描画指定を行っているので、ここでは <code>UsedCarModel</code> のインスタンスを渡すだけにします</li>
 </ul>
 </li>
+</ul>
+<pre><code class="language-kotlin">override fun onBindViewHolder(holder: UsedCarViewHolder, position: Int) {
+    holder.binding.usedCar = _usedCars?.get(position)
+    holder.binding.executePendingBindings()
+}
+</code></pre>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-viewviewmodel-の作成-33" class="anchor" href="#viewviewmodel-の作成-33" aria-hidden="true"></a>View/ViewModel の作成</h2>
+<h3><a id="user-content-検索結果リストの実装-13" class="anchor" href="#検索結果リストの実装-13" aria-hidden="true"></a>検索結果リストの実装</h3>
+<h4><a id="user-content-usedcaradapterの解説-8" class="anchor" href="#usedcaradapterの解説-8" aria-hidden="true"></a>UsedCarAdapterの解説</h4>
+<ul>
 <li><code>getItemCount()</code>
 <ul>
 <li>RecyclerViewのライフサイクルメソッドのひとつです</li>
@@ -2191,12 +2249,7 @@ interface UsedCarClickCallback {
 </ul>
 </li>
 </ul>
-<pre><code class="language-kotlin">override fun onBindViewHolder(holder: UsedCarViewHolder, position: Int) {
-    holder.binding.usedCar = _usedCars?.get(position)
-    holder.binding.executePendingBindings()
-}
-
-override fun getItemCount(): Int {
+<pre><code class="language-kotlin">override fun getItemCount(): Int {
     return _usedCars?.size ?: 0
 }
 </code></pre>
@@ -2209,9 +2262,9 @@ override fun getItemCount(): Int {
     
         <section >
             
-            <h2><a id="user-content-viewviewmodel-の作成-31" class="anchor" href="#viewviewmodel-の作成-31" aria-hidden="true"></a>View/ViewModel の作成</h2>
-<h3><a id="user-content-検索結果リストの実装-11" class="anchor" href="#検索結果リストの実装-11" aria-hidden="true"></a>検索結果リストの実装</h3>
-<h4><a id="user-content-usedcaradapterの解説-6" class="anchor" href="#usedcaradapterの解説-6" aria-hidden="true"></a>UsedCarAdapterの解説</h4>
+            <h2><a id="user-content-viewviewmodel-の作成-34" class="anchor" href="#viewviewmodel-の作成-34" aria-hidden="true"></a>View/ViewModel の作成</h2>
+<h3><a id="user-content-検索結果リストの実装-14" class="anchor" href="#検索結果リストの実装-14" aria-hidden="true"></a>検索結果リストの実装</h3>
+<h4><a id="user-content-usedcaradapterの解説-9" class="anchor" href="#usedcaradapterの解説-9" aria-hidden="true"></a>UsedCarAdapterの解説</h4>
 <ul>
 <li><code>open</code> アノテーションは「継承可能」を意味します</li>
 <li>このクラスでは <code>RecyclerView.ViewHolder</code> を継承していますが</li>
@@ -2229,8 +2282,8 @@ override fun getItemCount(): Int {
     
         <section >
             
-            <h2><a id="user-content-viewviewmodel-の作成-32" class="anchor" href="#viewviewmodel-の作成-32" aria-hidden="true"></a>View/ViewModel の作成</h2>
-<h3><a id="user-content-検索結果リストの実装-12" class="anchor" href="#検索結果リストの実装-12" aria-hidden="true"></a>検索結果リストの実装</h3>
+            <h2><a id="user-content-viewviewmodel-の作成-35" class="anchor" href="#viewviewmodel-の作成-35" aria-hidden="true"></a>View/ViewModel の作成</h2>
+<h3><a id="user-content-検索結果リストの実装-15" class="anchor" href="#検索結果リストの実装-15" aria-hidden="true"></a>検索結果リストの実装</h3>
 <h4><a id="user-content-viewの実装" class="anchor" href="#viewの実装" aria-hidden="true"></a>Viewの実装</h4>
 <ul>
 <li>MainFragmentに以下を実装します
@@ -2261,8 +2314,8 @@ override fun getItemCount(): Int {
     
         <section >
             
-            <h2><a id="user-content-viewviewmodel-の作成-33" class="anchor" href="#viewviewmodel-の作成-33" aria-hidden="true"></a>View/ViewModel の作成</h2>
-<h3><a id="user-content-検索結果リストの実装-13" class="anchor" href="#検索結果リストの実装-13" aria-hidden="true"></a>検索結果リストの実装</h3>
+            <h2><a id="user-content-viewviewmodel-の作成-36" class="anchor" href="#viewviewmodel-の作成-36" aria-hidden="true"></a>View/ViewModel の作成</h2>
+<h3><a id="user-content-検索結果リストの実装-16" class="anchor" href="#検索結果リストの実装-16" aria-hidden="true"></a>検索結果リストの実装</h3>
 <h4><a id="user-content-viewの実装-1" class="anchor" href="#viewの実装-1" aria-hidden="true"></a>Viewの実装</h4>
 <ul>
 <li>MainFragmentに以下を実装します
@@ -2286,8 +2339,8 @@ override fun getItemCount(): Int {
     
         <section >
             
-            <h2><a id="user-content-viewviewmodel-の作成-34" class="anchor" href="#viewviewmodel-の作成-34" aria-hidden="true"></a>View/ViewModel の作成</h2>
-<h3><a id="user-content-検索結果リストの実装-14" class="anchor" href="#検索結果リストの実装-14" aria-hidden="true"></a>検索結果リストの実装</h3>
+            <h2><a id="user-content-viewviewmodel-の作成-37" class="anchor" href="#viewviewmodel-の作成-37" aria-hidden="true"></a>View/ViewModel の作成</h2>
+<h3><a id="user-content-検索結果リストの実装-17" class="anchor" href="#検索結果リストの実装-17" aria-hidden="true"></a>検索結果リストの実装</h3>
 <h4><a id="user-content-viewの実装-2" class="anchor" href="#viewの実装-2" aria-hidden="true"></a>Viewの実装</h4>
 <ul>
 <li><code>ImageViewExtension</code> を実装します
@@ -2324,8 +2377,8 @@ class ImageViewExtension {
     
         <section >
             
-            <h2><a id="user-content-viewviewmodel-の作成-35" class="anchor" href="#viewviewmodel-の作成-35" aria-hidden="true"></a>View/ViewModel の作成</h2>
-<h3><a id="user-content-検索結果リストの実装-15" class="anchor" href="#検索結果リストの実装-15" aria-hidden="true"></a>検索結果リストの実装</h3>
+            <h2><a id="user-content-viewviewmodel-の作成-38" class="anchor" href="#viewviewmodel-の作成-38" aria-hidden="true"></a>View/ViewModel の作成</h2>
+<h3><a id="user-content-検索結果リストの実装-18" class="anchor" href="#検索結果リストの実装-18" aria-hidden="true"></a>検索結果リストの実装</h3>
 <ul>
 <li>いざ実行！</li>
 </ul>
@@ -2339,8 +2392,8 @@ class ImageViewExtension {
     
         <section >
             
-            <h2><a id="user-content-viewviewmodel-の作成-36" class="anchor" href="#viewviewmodel-の作成-36" aria-hidden="true"></a>View/ViewModel の作成</h2>
-<h3><a id="user-content-検索結果リストの実装-16" class="anchor" href="#検索結果リストの実装-16" aria-hidden="true"></a>検索結果リストの実装</h3>
+            <h2><a id="user-content-viewviewmodel-の作成-39" class="anchor" href="#viewviewmodel-の作成-39" aria-hidden="true"></a>View/ViewModel の作成</h2>
+<h3><a id="user-content-検索結果リストの実装-19" class="anchor" href="#検索結果リストの実装-19" aria-hidden="true"></a>検索結果リストの実装</h3>
 <ul>
 <li>画像が表示してくれない
 <ul>
@@ -2361,8 +2414,8 @@ class ImageViewExtension {
     
         <section >
             
-            <h2><a id="user-content-viewviewmodel-の作成-37" class="anchor" href="#viewviewmodel-の作成-37" aria-hidden="true"></a>View/ViewModel の作成</h2>
-<h3><a id="user-content-検索結果リストの実装-17" class="anchor" href="#検索結果リストの実装-17" aria-hidden="true"></a>検索結果リストの実装</h3>
+            <h2><a id="user-content-viewviewmodel-の作成-40" class="anchor" href="#viewviewmodel-の作成-40" aria-hidden="true"></a>View/ViewModel の作成</h2>
+<h3><a id="user-content-検索結果リストの実装-20" class="anchor" href="#検索結果リストの実装-20" aria-hidden="true"></a>検索結果リストの実装</h3>
 <h4><a id="user-content-androidmanifestの修正" class="anchor" href="#androidmanifestの修正" aria-hidden="true"></a>AndroidManifestの修正</h4>
 <pre><code class="language-xml">    &lt;application
         android:allowBackup=&quot;true&quot;
@@ -2383,8 +2436,8 @@ class ImageViewExtension {
     
         <section >
             
-            <h2><a id="user-content-viewviewmodel-の作成-38" class="anchor" href="#viewviewmodel-の作成-38" aria-hidden="true"></a>View/ViewModel の作成</h2>
-<h3><a id="user-content-検索結果リストの実装-18" class="anchor" href="#検索結果リストの実装-18" aria-hidden="true"></a>検索結果リストの実装</h3>
+            <h2><a id="user-content-viewviewmodel-の作成-41" class="anchor" href="#viewviewmodel-の作成-41" aria-hidden="true"></a>View/ViewModel の作成</h2>
+<h3><a id="user-content-検索結果リストの実装-21" class="anchor" href="#検索結果リストの実装-21" aria-hidden="true"></a>検索結果リストの実装</h3>
 <ul>
 <li>いざ実行！</li>
 </ul>
@@ -2398,8 +2451,8 @@ class ImageViewExtension {
     
         <section >
             
-            <h2><a id="user-content-viewviewmodel-の作成-39" class="anchor" href="#viewviewmodel-の作成-39" aria-hidden="true"></a>View/ViewModel の作成</h2>
-<h3><a id="user-content-検索結果リストの実装-19" class="anchor" href="#検索結果リストの実装-19" aria-hidden="true"></a>検索結果リストの実装</h3>
+            <h2><a id="user-content-viewviewmodel-の作成-42" class="anchor" href="#viewviewmodel-の作成-42" aria-hidden="true"></a>View/ViewModel の作成</h2>
+<h3><a id="user-content-検索結果リストの実装-22" class="anchor" href="#検索結果リストの実装-22" aria-hidden="true"></a>検索結果リストの実装</h3>
 <ul>
 <li>いざ実行！
 <ul>
@@ -2417,7 +2470,7 @@ class ImageViewExtension {
     
         <section >
             
-            <h2><a id="user-content-viewviewmodel-の作成-40" class="anchor" href="#viewviewmodel-の作成-40" aria-hidden="true"></a>View/ViewModel の作成</h2>
+            <h2><a id="user-content-viewviewmodel-の作成-43" class="anchor" href="#viewviewmodel-の作成-43" aria-hidden="true"></a>View/ViewModel の作成</h2>
 <h3><a id="user-content-完成！" class="anchor" href="#完成！" aria-hidden="true"></a>完成！</h3>
 
             </section>
@@ -2428,7 +2481,7 @@ class ImageViewExtension {
     
         <section >
             
-            <h2><a id="user-content-viewviewmodel-の作成-41" class="anchor" href="#viewviewmodel-の作成-41" aria-hidden="true"></a>View/ViewModel の作成</h2>
+            <h2><a id="user-content-viewviewmodel-の作成-44" class="anchor" href="#viewviewmodel-の作成-44" aria-hidden="true"></a>View/ViewModel の作成</h2>
 <h3><a id="user-content-完成だが、後もう少しつづくんじゃ。。。" class="anchor" href="#完成だが、後もう少しつづくんじゃ。。。" aria-hidden="true"></a>完成…だが、後もう少しつづくんじゃ。。。</h3>
 
             </section>
